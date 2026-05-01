@@ -14,6 +14,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'LXXI',
   description: 'Pioneering alternative investments with vision and precision.',
+  keywords: 'LXXI, alternative investments, venture capital, private equity, hedge funds, real estate, infrastructure, private credit, emerging markets, technology startups, sustainable investments',
 };
 
 export default function RootLayout({
