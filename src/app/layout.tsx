@@ -1,20 +1,36 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import AOSInitializer from '@/components/AOSInitializer';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-inter',
+  display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: 'LXXI',
-  description: 'Pioneering alternative investments with vision and precision.',
-  keywords: 'LXXI, alternative investments, venture capital, private equity, hedge funds, real estate, infrastructure, private credit, emerging markets, technology startups, sustainable investments',
+  title: 'LXXI Limited — Defined by Purpose. Driven by Africa.',
+  description:
+    'LXXI Limited has been at the intersection of African ambition and global capital for over 5 years. Explore our investment strategy, leadership, and vision for Africa.',
+  keywords:
+    'LXXI, alternative investments, venture capital, private equity, Africa investment, emerging markets, African capital, strategic partnerships',
+  openGraph: {
+    title: 'LXXI Limited — Defined by Purpose. Driven by Africa.',
+    description: "Pioneering alternative investments across Africa's most dynamic markets.",
+    images: ['/og-image.jpg'],
+  },
 };
 
 export default function RootLayout({
@@ -23,11 +39,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} font-sans`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <body className='flex flex-col justify-between min-h-full'>
         <AOSInitializer />
-        <Header />
-        <main>{children}</main>
+        <Navbar />
+        {children}
         <Footer />
       </body>
     </html>

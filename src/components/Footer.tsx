@@ -1,38 +1,120 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import { Linkedin, Twitter, MapPin, Mail, Phone } from 'lucide-react';
+
+const footerLinks = {
+  Company: [
+    { label: 'About Us', href: '/about' },
+    { label: 'Our Approach', href: '/approach' },
+    { label: 'Leadership', href: '/about#leadership' },
+    { label: 'Careers', href: '/careers' },
+    { label: 'News', href: '/news' },
+  ],
+  Services: [
+    { label: 'Private Equity', href: '/services' },
+    { label: 'Venture Capital', href: '/services' },
+    { label: 'Real Estate', href: '/services' },
+    { label: 'Infrastructure', href: '/services' },
+    { label: 'Private Credit', href: '/services' },
+  ],
+  Legal: [
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms of Service', href: '/terms' },
+    { label: 'Cookie Policy', href: '/cookies' },
+    { label: 'Disclosures', href: '/disclosures' },
+  ],
+};
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div>
-          <h3 className="text-xl font-bold mb-4">LXXI</h3>
-          <p className="text-gray-400">Crafting wealth with precision.</p>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-4">Explore</h4>
-          <ul className="space-y-2 text-gray-400">
-            <li><Link href="/about" className="hover:text-blue-400">About</Link></li>
-            <li><Link href="/what-we-do" className="hover:text-blue-400">What We Do</Link></li>
-            <li><Link href="/insights" className="hover:text-blue-400">Insights</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-4">Legal</h4>
-          <ul className="space-y-2 text-gray-400">
-            <li><Link href="/privacy" className="hover:text-blue-400">Privacy</Link></li>
-            <li><Link href="/terms" className="hover:text-blue-400">Terms</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold mb-4">Connect</h4>
-          <div className="flex space-x-4">
-            <a href="#" className="text-gray-400 hover:text-blue-400">Twitter</a>
-            <a href="#" className="text-gray-400 hover:text-blue-400">LinkedIn</a>
+    <footer className="bg-[#0a0c0e] border-t border-[rgba(229,182,62,0.1)]">
+      {/* Main footer */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+          {/* Brand column */}
+          <div className="lg:col-span-2">
+            <Link href="/" className="inline-block mb-5">
+              <Image
+                src="/logo.png"
+                alt="LXXI"
+                width={90}
+                height={40}
+                className="h-10 w-auto"
+              />
+            </Link>
+            <p className="text-gray-400 text-sm leading-loose mb-6 max-w-xs">
+              LXXI Limited is at the intersection of African ambition and global
+              capital — creating transformative investment opportunities across
+              the continent.
+            </p>
+
+            {/* Contact info */}
+            <div className="space-y-3 mb-6">
+              <div className="flex items-start gap-2.5 text-gray-400 text-sm">
+                <MapPin size={14} className="text-[#E5B63E] mt-0.5 flex-shrink-0" />
+                <span>Abuja, Nigeria</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-gray-400 text-sm">
+                <Mail size={14} className="text-[#E5B63E] flex-shrink-0" />
+                <span>info@lxxi.africa</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-gray-400 text-sm">
+                <Phone size={14} className="text-[#E5B63E] flex-shrink-0" />
+                <span>+234 800 000 0000</span>
+              </div>
+            </div>
+
+            {/* Social icons */}
+            <div className="flex gap-3">
+              {[
+                { Icon: Linkedin, label: 'LinkedIn' },
+                { Icon: Twitter, label: 'Twitter' },
+              ].map(({ Icon, label }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className="w-9 h-9 rounded-lg bg-[rgba(229,182,62,0.08)] border border-[rgba(229,182,62,0.15)] flex items-center justify-center text-gray-400 hover:text-[#E5B63E] hover:border-[rgba(229,182,62,0.4)] hover:bg-[rgba(229,182,62,0.12)] transition-all duration-200"
+                >
+                  <Icon size={15} />
+                </a>
+              ))}
+            </div>
           </div>
+
+          {/* Link columns */}
+          {Object.entries(footerLinks).map(([title, links]) => (
+            <div key={title}>
+              <h4 className="text-white text-sm font-semibold tracking-wider uppercase mb-5">
+                {title}
+              </h4>
+              <ul className="space-y-3">
+                {links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-gray-400 text-sm hover:text-[#E5B63E] transition-colors duration-200 hover-gold-border"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
-      <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-        <p>&copy; 2025 LXXI. All rights reserved.</p>
+
+      {/* Bottom bar */}
+      <div className="border-t border-[rgba(229,182,62,0.08)]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-gray-500 text-xs">
+            &copy; {new Date().getFullYear()} LXXI Limited. All rights reserved.
+          </p>
+          <p className="text-gray-600 text-xs">
+            Investment involves risk. Past performance is not indicative of future results.
+          </p>
+        </div>
       </div>
     </footer>
   );

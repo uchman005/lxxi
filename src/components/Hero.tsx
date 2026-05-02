@@ -1,161 +1,137 @@
-// components/Hero.tsx
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import Image from "next/image";
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight, TrendingUp, Users, Award } from 'lucide-react';
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
-const slides = [
-  {
-    title: "Empowering Africa Through",
-    highlight: "Strategic Investments And Partnerships",
-    subtitle:
-      "LXII is committed to creating robust investment solutions tailored for the African landscape.",
-    bgImage:
-      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&q=80&w=2070",
-  },
-  {
-    title: "Building Tomorrow's Africa",
-    highlight: "Through Strategic Capital & Innovation",
-    subtitle:
-      "Partner with us to unlock opportunities across high-growth sectors in Africa's dynamic economy.",
-    bgImage:
-      "https://images.unsplash.com/photo-1581092160560-1c1e428e9d65?auto=format&fit=crop&q=80&w=2070",
-  },
-  {
-    title: "Invest in Africa's Future",
-    highlight: "Create Lasting Wealth & Impact",
-    subtitle:
-      "Strategic investments that drive sustainable growth and shared prosperity across the continent.",
-    bgImage:
-      "https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&q=80&w=2070",
-  },
+const stats = [
+  { value: '$4.2B', label: 'Assets Under Management', icon: TrendingUp },
+  { value: '15', label: 'Partnerships Established', icon: Users },
+  { value: '5yrs', label: 'Legacy of Excellence', icon: Award },
 ];
 
 export default function Hero() {
-  useEffect(() => {
-    // Make sure AOS is refreshed after Swiper mounts
-    if (typeof window !== "undefined" && window.Aos) {
-      window.Aos.refresh();
-    }
-  }, []);
-
   return (
-    <section className="relative min-h-screen">
-      <Swiper
-        modules={[Autoplay, Pagination, Navigation]}
-        spaceBetween={0}
-        slidesPerView={1}
-        loop={true}
-        autoplay={{
-          delay: 6500,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-          bulletClass: "swiper-custom-bullet",
-          bulletActiveClass: "swiper-custom-bullet-active",
-        }}
-        navigation={true}
-        className="h-screen"
-      >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div className="relative h-full">
-              {/* Background image */}
-              <div className="absolute inset-0">
-                <Image
-                  src={slide.bgImage}
-                  alt="African cityscape"
-                  fill
-                  className="object-cover brightness-[0.35]"
-                  priority={index === 0}
-                  quality={85}
-                  placeholder="blur"
-                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAErgJ9aA9l9gAAAABJRU5ErkJggg=="
-                />
-              </div>
+    <section id="hero" className="relative min-h-screen flex flex-col">
+      {/* Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?auto=format&fit=crop&w=2070&q=85"
+          alt="African City Skyline at Night"
+          fill
+          className="object-cover object-center"
+          priority
+          quality={90}
+        />
+        {/* Multi-layer dark overlay */}
+        <div className="absolute inset-0 bg-[#0E1012]/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0E1012]/30 via-transparent to-[#0E1012]/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0E1012]/80 via-[#0E1012]/30 to-transparent" />
 
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-linear-to-b from-black/30 via-black/60 to-black/80" />
+        {/* Gold accent glow */}
+        <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#E5B63E]/8 to-transparent" />
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#E5B63E]/5 rounded-full blur-3xl" />
+      </div>
 
-              {/* Content */}
-              <div className="relative h-full flex items-center">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
-                  <div className="max-w-4xl">
-                    <h1
-                      className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6"
-                      data-aos="fade-up"
-                      data-aos-delay="100"
-                    >
-                      {slide.title}
-                      <br />
-                      <span className="text-yellow-400">{slide.highlight}</span>
-                    </h1>
+      {/* Content */}
+      <div className="relative flex-1 flex flex-col justify-center">
+        {/* Spacer for navbar */}
+        <div className="h-28 md:h-32" />
 
-                    <p
-                      className="text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl"
-                      data-aos="fade-up"
-                      data-aos-delay="200"
-                    >
-                      {slide.subtitle}
-                    </p>
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 w-full py-10 md:py-10">
+          {/* Eyebrow */}
+          <div
+            className="flex items-center gap-3 mb-6"
+            data-aos="fade-right"
+            data-aos-delay="0"
+          >
+            <div className="h-px w-12 bg-[#E5B63E]" />
+            <span className="text-[#E5B63E] text-xs font-semibold tracking-[0.25em] uppercase">
+              About LXXI
+            </span>
+          </div>
 
-                    <div
-                      className="flex flex-col sm:flex-row gap-5"
-                      data-aos="fade-up"
-                      data-aos-delay="300"
-                    >
-                      <a
-                        href="#services"
-                        className="inline-flex items-center justify-center px-10 py-5 bg-yellow-500 hover:bg-yellow-600 text-black font-bold text-lg rounded-xl transition-colors shadow-lg shadow-yellow-500/20"
-                      >
-                        Explore Our Services
-                      </a>
-                      <a
-                        href="#contact"
-                        className="inline-flex items-center justify-center px-10 py-5 border-2 border-yellow-500 text-yellow-400 hover:bg-yellow-500/10 font-bold text-lg rounded-xl transition-colors"
-                      >
-                        Partner With Us
-                      </a>
+          {/* Main headline */}
+          <h1
+            className="text-3xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.05] mb-6 max-w-4xl"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            Defined by{' '}
+            <span className="font-playfair italic text-[#E5B63E]">Purpose.</span>
+            <br />
+            <span className="text-white">Driven by Africa.</span>
+          </h1>
+
+          {/* Subtext */}
+          <p
+            className="text-base md:text-lg text-gray-300 max-w-xl leading-relaxed mb-10"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            For over 5 years, LXXI LIMITED has been at the intersection of African
+            ambition and global capital — bridging opportunities, capital, and
+            strategic alliances across the continent.
+          </p>
+
+          {/* CTA */}
+          <div
+            className="flex flex-col sm:flex-row gap-4"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <Link
+              href="/about"
+              className="btn-gold inline-flex items-center justify-center gap-2 px-8 py-4 rounded text-sm font-bold tracking-wide"
+            >
+              Join Our Community
+              <ArrowRight size={16} strokeWidth={2.5} />
+            </Link>
+            <Link
+              href="/services"
+              className="btn-outline-gold inline-flex items-center justify-center gap-2 px-8 py-4 rounded text-sm font-semibold tracking-wide"
+            >
+              Explore Services
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Stats bar */}
+      <div className="relative z-10">
+        <div className="bg-[rgba(14,16,18,0.85)] backdrop-blur-md border-t border-[rgba(229,182,62,0.15)]">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10">
+            <div className="grid grid-cols-1 md:grid-cols-3">
+              {stats.map((stat, i) => {
+                const Icon = stat.icon;
+                return (
+                  <div
+                    key={stat.label}
+                    className={`flex items-center gap-4 py-7 px-6 ${i < stats.length - 1
+                      ? 'md:border-r border-[rgba(229,182,62,0.1)]'
+                      : ''
+                      }`}
+                    data-aos="fade-up"
+                    data-aos-delay={400 + i * 100}
+                  >
+                    <div className="w-10 h-10 rounded bg-[rgba(229,182,62,0.12)] flex items-center justify-center flex-shrink-0">
+                      <Icon size={18} className="text-[#E5B63E]" strokeWidth={1.8} />
+                    </div>
+                    <div>
+                      <div className="stat-number text-2xl md:text-3xl text-[#E5B63E] leading-none mb-1">
+                        {stat.value}
+                      </div>
+                      <div className="text-xs text-gray-400 font-medium tracking-widest uppercase">
+                        {stat.label}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      {/* Custom pagination bullets styling */}
-      <style jsx global>{`
-        .swiper-custom-bullet {
-          width: 14px;
-          height: 14px;
-          background: rgba(255, 255, 255, 0.4);
-          opacity: 1;
-          border-radius: 50%;
-          transition: all 0.3s ease;
-        }
-        .swiper-custom-bullet-active {
-          background: #fbbf24;
-          transform: scale(1.3);
-        }
-        .swiper-button-next,
-        .swiper-button-prev {
-          color: rgba(255, 255, 255, 0.7) !important;
-        }
-        .swiper-button-next:hover,
-        .swiper-button-prev:hover {
-          color: #fbbf24 !important;
-        }
-      `}</style>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

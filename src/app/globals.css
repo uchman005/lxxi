@@ -1,54 +1,244 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gold: #E5B63E;
+  --gold-light: #F0C85A;
+  --gold-dark: #C99A28;
+  --bg-primary: #0E1012;
+  --bg-secondary: #131619;
+  --bg-card: #1A1D21;
+  --text-primary: #FFFFFF;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+  --border: rgba(229, 182, 62, 0.15);
 }
 
+* {
+  box-sizing: border-box;
+}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-inter), system-ui, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-@layer components {
-  .glass {
-    @apply backdrop-blur-md bg-white/20 border border-white/10 shadow-lg;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.1)
-    );
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 3px;
+}
+
+/* Playfair Display — variable set by next/font in layout.tsx */
+.font-playfair {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #E5B63E, #F9E07A, #C99A28);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section separator */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.3;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(26, 29, 33, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(229, 182, 62, 0.12);
+}
+
+/* Gold border bottom on hover */
+.hover-gold-border {
+  position: relative;
+}
+
+.hover-gold-border::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.hover-gold-border:hover::after {
+  width: 100%;
+}
+
+/* Animated counter number */
+.stat-number {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* AOS override for smooth animations */
+[data-aos] {
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Custom button styles */
+.btn-gold {
+  background: var(--gold);
+  color: #0E1012;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-gold:hover::before {
+  left: 100%;
+}
+
+.btn-gold:hover {
+  background: var(--gold-light);
+  box-shadow: 0 8px 25px rgba(229, 182, 62, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-outline-gold {
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-gold:hover {
+  background: rgba(229, 182, 62, 0.1);
+  box-shadow: 0 4px 20px rgba(229, 182, 62, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Location card overlay */
+.location-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.location-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(14, 16, 18, 0.95) 0%, rgba(14, 16, 18, 0.4) 60%, transparent 100%);
+  transition: opacity 0.3s ease;
+}
+
+.location-card:hover::after {
+  opacity: 0.7;
+}
+
+.location-card img {
+  transition: transform 0.6s ease;
+}
+
+.location-card:hover img {
+  transform: scale(1.06);
+}
+
+/* Glow effects */
+.glow-gold {
+  box-shadow: 0 0 30px rgba(229, 182, 62, 0.2), 0 0 60px rgba(229, 182, 62, 0.08);
+}
+
+/* Leadership card */
+.leader-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.leader-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(229, 182, 62, 0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.leader-card:hover::before {
+  opacity: 1;
+}
+
+/* Swiper custom */
+.swiper-custom-bullet {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 1;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 4px;
+}
+
+.swiper-custom-bullet-active {
+  background: #E5B63E;
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* Mobile menu transition */
+.mobile-nav-enter {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.mobile-nav-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
   }
-  .glass-dark {
-    @apply backdrop-blur-md bg-gray-900/20 border border-gray-700/10 shadow-lg;
-    background: linear-gradient(
-      135deg,
-      rgba(30, 30, 30, 0.3),
-      rgba(30, 30, 30, 0.1)
-    );
+
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-    @apply antialiased;
-  }
-  code, pre {
-    font-family: var(--font-geist-mono), monospace;
-  }
+.animate-marquee {
+  animation: marquee 25s linear infinite;
 }
