@@ -63,7 +63,7 @@ export default function DynamicMarkets() {
               data-aos="fade-right"
               data-aos-delay="100"
             >
-              Pioneers Across Africa's Most{' '}
+              Pioneers Across Africa&pos;s Most{' '}
               <span className="font-playfair italic text-[#E5B63E]">Dynamic Markets</span>
             </h2>
           </div>
@@ -83,9 +83,8 @@ export default function DynamicMarkets() {
           {markets.map((market, i) => (
             <div
               key={market.country}
-              className={`location-card rounded-xl overflow-hidden cursor-pointer group ${
-                i === 0 ? 'md:col-span-2 lg:col-span-1' : ''
-              }`}
+              className={`location-card rounded-xl overflow-hidden cursor-pointer group ${i === 0 ? 'md:col-span-2 lg:col-span-1' : ''
+                }`}
               data-aos="fade-up"
               data-aos-delay={100 + i * 80}
             >

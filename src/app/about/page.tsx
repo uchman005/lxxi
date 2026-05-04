@@ -1,12 +1,10 @@
 import type { Metadata } from 'next';
-import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import GlobalConnectivity from '@/components/GlobalConnectivity';
 import Legacy from '@/components/Legacy';
 import DynamicMarkets from '@/components/DynamicMarkets';
 import Leadership from '@/components/Leadership';
 import CTA from '@/components/CTA';
-import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'LXXI Limited — Defined by Purpose. Driven by Africa.',

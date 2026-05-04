@@ -81,9 +81,9 @@ export default function GlobalConnectivity() {
               data-aos="fade-left"
               data-aos-delay="200"
             >
-              At LXXI Limited, we are rewriting Africa's wealth narrative. Our
+              At LXXI Limited, we are rewriting Africa&pos;s wealth narrative. Our
               approach bridges capital, opportunities, and strategic alliances —
-              connecting the continent's most promising ventures to international
+              connecting the continent&pos;s most promising ventures to international
               markets and expertise.
             </p>
 
@@ -93,7 +93,7 @@ export default function GlobalConnectivity() {
               data-aos-delay="250"
             >
               With deep roots across 20+ African markets and a global network of
-              100+ strategic partners, we deliver unmatched access to the continent's
+              100+ strategic partners, we deliver unmatched access to the continent&pos;s
               fastest-growing economies and sectors.
             </p>
 

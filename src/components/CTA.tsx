@@ -48,7 +48,7 @@ export default function CTA() {
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          Ready to explore Africa's most compelling investment opportunities?
+          Ready to explore Africa&apos;s most compelling investment opportunities?
           Schedule a confidential consultation with our expert team today.
         </p>
 
