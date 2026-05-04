@@ -111,8 +111,8 @@ export default function Footer() {
           <p className="text-gray-500 text-xs">
             &copy; {new Date().getFullYear()} LXXI Limited. All rights reserved.
           </p>
-          <p className="text-gray-600 text-xs">
-            Investment involves risk. Past performance is not indicative of future results.
+          <p className="text-gray-600 text-xs max-w-2xl">
+            This material is for qualified investors only and does not constitute investment advice or a solicitation to invest. Capital at risk. Past performance is not indicative of future results. LXXI Capital Management is a registered investment manager.
           </p>
         </div>
       </div>

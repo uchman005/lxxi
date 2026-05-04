@@ -121,18 +121,18 @@ const HeroCarousel: FC = () => {
                         </div>
 
                         {/* Content Container */}
-                        <div className="relative h-full flex items-center">
+                        <div className="relative h-full flex items-center py-10">
                             <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
                                 <div className="grid lg:grid-cols-12 gap-12 items-center">
                                     {/* Left Content */}
-                                    <div className="lg:col-span-7 space-y-8" data-aos="fade-up">
+                                    <div className="lg:col-span-7 space-y-8 mt-20" data-aos="fade-up">
                                         <div className="inline-block">
                                             <span className="text-amber-400 text-sm tracking-[3px] uppercase font-medium">
                                                 {slide.tagline}
                                             </span>
                                         </div>
 
-                                        <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-white leading-tight">
+                                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
                                             ACCESS TO <br />
                                             <span className="text-amber-400">{slide.highlightedText}</span> <br />
                                             OPPORTUNITIES
@@ -160,14 +160,14 @@ const HeroCarousel: FC = () => {
                                     </div>
 
                                     {/* Right Platform Panel */}
-                                    <div className="lg:col-span-5" data-aos="fade-left" data-aos-delay="300">
-                                        <div className="bg-amber-400 text-black p-10 rounded-2xl shadow-2xl">
+                                    <div className="lg:col-span-5 hidden lg:block" data-aos="fade-left" data-aos-delay="300">
+                                        <div className="bg-amber-300 text-black p-10 rounded-2xl shadow-2xl">
                                             {slide.platformTitle && (
                                                 <p className="uppercase tracking-widest text-sm mb-3 font-medium">
                                                     {slide.platformTitle}
                                                 </p>
                                             )}
-                                            <p className="text-3xl leading-tight font-semibold">
+                                            <p className="text-2xl leading-tight font-semibold">
                                                 {slide.platformDescription}
                                             </p>
                                         </div>

@@ -7,10 +7,10 @@ export default function Approach() {
                 <div className="inline-block bg-yellow-400 text-black px-5 py-2 rounded-full text-sm mb-6">
                     Our Approach to Investment
                 </div>
-                <h1 className="text-4xl md:text-5xl font-semibold text-gray-900 leading-tight mb-6">
+                <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 leading-tight mb-6">
                     From Opportunity to <br />
                     Executed Investment
-                </h1>
+                </h2>
                 <p className="text-gray-700 text-base leading-relaxed">
                     We deploy capital with a long-term view,<br /> focusing on high-growth
                     markets, strong partnerships,<br /> and real opportunities across Africa.
