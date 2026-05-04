@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, TrendingUp, Users, Award } from 'lucide-react';
@@ -13,10 +11,9 @@ const stats = [
 export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex flex-col">
-      {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?auto=format&fit=crop&w=2070&q=85"
+          src="/about_hero.png"
           alt="African City Skyline at Night"
           fill
           className="object-cover object-center"
@@ -70,8 +67,9 @@ export default function Hero() {
             data-aos-delay="200"
           >
             For over 5 years, LXXI LIMITED has been at the intersection of African
-            ambition and global capital — bridging opportunities, capital, and
-            strategic alliances across the continent.
+            ambition and global capital - building enduring wealth through disciplined
+            strategy, deep-rooted relationships, and an unwavering belief in the
+            continent’s potential.
           </p>
 
           {/* CTA */}

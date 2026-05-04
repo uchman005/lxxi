@@ -63,7 +63,7 @@ export default function DynamicMarkets() {
               data-aos="fade-right"
               data-aos-delay="100"
             >
-              Pioneers Across Africa&pos;s Most{' '}
+              Pioneers Across Africa&apos;s Most{' '}
               <span className="font-playfair italic text-[#E5B63E]">Dynamic Markets</span>
             </h2>
           </div>

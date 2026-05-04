@@ -10,7 +10,7 @@ import InvestmentThemes from '@/components/home/InvestmentThemes';
 import InvestmentTeamCTA from '@/components/home/InvestmentCta';
 
 export const metadata: Metadata = {
-  title: 'LXXI Limited — Defined by Purpose. Driven by Africa.',
+  title: 'LXXI Limited',
   description:
     'For over 5 years, LXXI LIMITED has been at the intersection of African ambition and global capital. Explore our investment strategy, leadership, and vision.',
   keywords:
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: 'LXXI Limited — Defined by Purpose. Driven by Africa.',
     description:
       'Pioneering alternative investments across Africa\'s most dynamic markets.',
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 

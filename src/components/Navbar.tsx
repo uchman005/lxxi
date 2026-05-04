@@ -51,11 +51,10 @@ export default function Navbar() {
 
       {/* Main navbar */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-[#0E1012]/95 backdrop-blur-xl shadow-lg shadow-black/30 border-b border-[rgba(229,182,62,0.1)]'
-            : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+          ? 'bg-[#0E1012]/95 backdrop-blur-xl shadow-lg shadow-black/30 border-b border-[rgba(229,182,62,0.1)]'
+          : 'bg-transparent'
+          }`}
         style={{ top: scrolled ? 0 : '36px' }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
@@ -73,6 +72,13 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Nav */}
+            <button
+              className="xl:hidden text-gray-300 hover:text-[#E5B63E] transition-colors p-1.5 z-50"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
             <nav className="hidden xl:flex items-center gap-1">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
@@ -80,11 +86,10 @@ export default function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`relative px-3 py-2 text-sm font-medium tracking-wide transition-colors duration-200 hover-gold-border ${
-                      isActive
-                        ? 'text-[#E5B63E]'
-                        : 'text-gray-300 hover:text-white'
-                    }`}
+                    className={`relative px-3 py-2 text-sm font-medium tracking-wide transition-colors duration-200 hover-gold-border ${isActive
+                      ? 'text-[#E5B63E]'
+                      : 'text-gray-300 hover:text-white'
+                      }`}
                   >
                     {item.label}
                     {isActive && (
@@ -94,42 +99,22 @@ export default function Navbar() {
                 );
               })}
             </nav>
-
-            {/* CTA + Mobile toggle */}
-            <div className="flex items-center gap-3">
-              <button
-                aria-label="Search"
-                className="hidden xl:flex items-center gap-2 px-4 py-2 bg-[#E5B63E] text-[#0E1012] text-sm font-semibold rounded transition-all hover:bg-[#F0C85A] hover:shadow-lg hover:shadow-[#E5B63E]/30"
-              >
-                <Search size={14} strokeWidth={2.5} />
-                <span>Search in site</span>
-              </button>
-              <button
-                className="xl:hidden text-gray-300 hover:text-[#E5B63E] transition-colors p-1.5 z-50"
-                onClick={() => setMobileOpen(!mobileOpen)}
-                aria-label="Toggle menu"
-              >
-                {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
           </div>
         </div>
       </header>
 
       {/* Mobile Menu */}
       <div
-        className={`xl:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out ${
-          mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`xl:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out ${mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
       >
         <div
           className="absolute inset-0 bg-black/70 backdrop-blur-sm"
           onClick={() => setMobileOpen(false)}
         />
         <div
-          className={`absolute right-0 top-0 h-full w-80 max-w-full bg-[#0E1012] border-l border-[rgba(229,182,62,0.15)] flex flex-col transition-transform duration-300 ${
-            mobileOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+          className={`absolute right-0 top-0 h-full w-80 max-w-full bg-[#0E1012] border-l border-[rgba(229,182,62,0.15)] flex flex-col transition-transform duration-300 ${mobileOpen ? 'translate-x-0' : 'translate-x-full'
+            }`}
         >
           <div className="flex items-center justify-between p-6 border-b border-[rgba(229,182,62,0.1)]">
             <Image src="/logo.png" alt="LXXI" width={80} height={36} className="h-9 w-auto" />
@@ -142,11 +127,10 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className={`py-3 px-4 text-sm font-medium tracking-wide rounded transition-all duration-200 ${
-                    isActive
-                      ? 'text-[#E5B63E] bg-[rgba(229,182,62,0.08)] border-l-2 border-[#E5B63E] pl-3'
-                      : 'text-gray-300 hover:text-white hover:bg-white/5'
-                  }`}
+                  className={`py-3 px-4 text-sm font-medium tracking-wide rounded transition-all duration-200 ${isActive
+                    ? 'text-[#E5B63E] bg-[rgba(229,182,62,0.08)] border-l-2 border-[#E5B63E] pl-3'
+                    : 'text-gray-300 hover:text-white hover:bg-white/5'
+                    }`}
                 >
                   {item.label}
                 </Link>

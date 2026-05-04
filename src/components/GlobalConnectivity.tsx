@@ -98,7 +98,7 @@ export default function GlobalConnectivity() {
             </p>
 
             <a
-              href="/about"
+              href="/approach"
               className="inline-flex items-center gap-2 text-[#E5B63E] text-sm font-semibold hover:gap-3 transition-all duration-200"
               data-aos="fade-left"
               data-aos-delay="300"
