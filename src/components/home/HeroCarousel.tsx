@@ -132,9 +132,9 @@ const HeroCarousel: FC = () => {
                                             </span>
                                         </div>
 
-                                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                                        <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold text-white leading-tight">
                                             ACCESS TO <br />
-                                            <span className="text-amber-400">{slide.highlightedText}</span> <br />
+                                            <span className="font-playfair italic text-[#E5B63E]">{slide.highlightedText}</span><br />
                                             OPPORTUNITIES
                                         </h1>
 

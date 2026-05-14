@@ -1,5 +1,9 @@
-export default function page() {
+import ServiceHero from "./components/Hero"
+
+export default function Services() {
     return (
-        <h1>Services</h1>
+        <>
+            <ServiceHero />
+        </>
     )
 }

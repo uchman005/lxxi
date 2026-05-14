@@ -64,9 +64,9 @@ export default function Navbar() {
               <Image
                 src="/logo.png"
                 alt="LXXI Logo"
-                width={90}
-                height={40}
-                className="h-10 w-auto object-contain"
+                width={900}
+                height={400}
+                className="h-12 w-auto object-contain"
                 priority
               />
             </Link>

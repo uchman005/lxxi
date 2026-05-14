@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import Hero from '@/components/about/Hero';
 import GlobalConnectivity from '@/components/GlobalConnectivity';
-import Legacy from '@/components/Legacy';
-import DynamicMarkets from '@/components/DynamicMarkets';
-import Leadership from '@/components/Leadership';
+// import Legacy from '@/components/Legacy';
+// import DynamicMarkets from '@/components/DynamicMarkets';
+// import Leadership from '@/components/Leadership';
 import CTA from '@/components/CTA';
 import Mission from '@/components/about/Mission';
 import TimelineSection from '@/components/about/TimeLine';
+import OurPrinciples from '@/components/about/OurPrinciples';
+import Leadership from '@/components/about/Leadership';
 
 export const metadata: Metadata = {
   title: 'LXXI Limited — Defined by Purpose. Driven by Africa.',
@@ -28,13 +30,13 @@ export default function Home() {
       <Hero />
       <Mission />
       <TimelineSection />
-
-
-      <GlobalConnectivity />
+      <OurPrinciples />
+      <Leadership />
+      {/* <GlobalConnectivity /> */}
       {/* <Legacy /> */}
       {/* <DynamicMarkets /> */}
       {/* <Leadership /> */}
-      <CTA />
+      {/* <CTA /> */}
     </main>
   );
 }
