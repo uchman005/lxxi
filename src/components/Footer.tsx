@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Linkedin, Twitter, MapPin, Mail, Phone } from 'lucide-react';
+import { Linkedin, MapPin, Mail, Phone, X, Instagram } from 'lucide-react';
 
 const footerLinks = {
   Company: [
@@ -37,9 +37,9 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt="LXXI"
-                width={90}
-                height={40}
-                className="h-10 w-auto"
+                width={900}
+                height={900}
+                className="h-16 w-auto"
               />
             </Link>
             <p className="text-gray-400 text-sm leading-loose mb-6 max-w-xs">
@@ -51,33 +51,35 @@ export default function Footer() {
             {/* Contact info */}
             <div className="space-y-3 mb-6">
               <div className="flex items-start gap-2.5 text-gray-400 text-sm">
-                <MapPin size={14} className="text-[#E5B63E] mt-0.5 flex-shrink-0" />
+                <MapPin size={14} className="text-[#E5B63E] mt-0.5 shrink-0" />
                 <span>Abuja, Nigeria</span>
               </div>
               <div className="flex items-center gap-2.5 text-gray-400 text-sm">
-                <Mail size={14} className="text-[#E5B63E] flex-shrink-0" />
+                <Mail size={14} className="text-[#E5B63E] shrink-0" />
                 <span>info@lxxi.africa</span>
               </div>
               <div className="flex items-center gap-2.5 text-gray-400 text-sm">
-                <Phone size={14} className="text-[#E5B63E] flex-shrink-0" />
-                <span>+234 800 000 0000</span>
+                <Phone size={14} className="text-[#E5B63E] shrink-0" />
+                <span>+234 814 094 0409</span>
               </div>
             </div>
 
             {/* Social icons */}
             <div className="flex gap-3">
               {[
-                { Icon: Linkedin, label: 'LinkedIn' },
-                { Icon: Twitter, label: 'Twitter' },
-              ].map(({ Icon, label }) => (
-                <a
+                { Icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/company/lxxi/', color: "text-blue-600" },
+                { Icon: X, label: 'Twitter', href: 'https://x.com/LXXILimited', color: "text-white" },
+                { Icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/lxxibrokerage/', color: "text-purple-600" },
+              ].map(({ Icon, label, href, color }) => (
+                <Link
                   key={label}
-                  href="#"
+                  href={href}
+                  target='_blank'
                   aria-label={label}
                   className="w-9 h-9 rounded-lg bg-[rgba(229,182,62,0.08)] border border-[rgba(229,182,62,0.15)] flex items-center justify-center text-gray-400 hover:text-[#E5B63E] hover:border-[rgba(229,182,62,0.4)] hover:bg-[rgba(229,182,62,0.12)] transition-all duration-200"
                 >
-                  <Icon size={15} />
-                </a>
+                  <Icon size={20} className={color} />
+                </Link>
               ))}
             </div>
           </div>

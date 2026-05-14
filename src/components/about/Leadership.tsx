@@ -1,4 +1,3 @@
-import React from 'react';
 import { Instagram, Linkedin, X, } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -6,38 +5,39 @@ import Image from 'next/image';
 const leaders = [
   {
     id: 1,
+    name: "Stephanie Amarachi Patman",
+    title: "Managing Director & CEO",
+    image: "/people/amara.jpg",
+    x: "",
+    instagram: "https://www.instagram.com/amara.patman",
+    linkedin: "https://www.linkedin.com/in/stephanie-amarachi-patman-767992170/"
+  },
+  {
+    id: 2,
     name: "Victor Ogah Owoicho",
-    title: "Managing Director",
+    title: "Marketing Director",
     image: "/people/victor.jpg",
     x: "",
     instagram: "",
     linkedin: ""
   },
   {
-    id: 2,
+    id: 3,
     name: "Mgbebu Hilda Chiamaka",
     title: "Head of Finance and Investments",
     image: "/people/hilda.jpg",
     x: "",
     instagram: "",
-    linkedin: ""
+    linkedin: "https://www.linkedin.com/in/hilda-mgbebu-112b34194/"
   },
-  {
-    id: 3,
-    name: "Stephanie Amarachi Patman",
-    title: "Managing Director & CEO",
-    image: "/people/amara.jpg",
-    x: "",
-    instagram: "",
-    linkedin: ""
-  },
+
   {
     id: 4,
-    name: "Ochuwa Mercy Ochibo",
+    name: "Ochapa Mercy Ochiba",
     title: "Head of Operations",
     image: "/people/mercy.jpg",
     x: "",
-    instagram: "",
+    instagram: "https://www.instagram.com/ochiba25/",
     linkedin: ""
   },
   {
@@ -46,8 +46,8 @@ const leaders = [
     title: "Head of Legal & Compliance",
     image: "/people/joan.jpg",
     x: "",
-    instagram: "",
-    linkedin: ""
+    instagram: "https://www.instagram.com/terrific_joan_/",
+    linkedin: "https://www.linkedin.com/in/joan-anaba-210775232/"
   },
 ];
 
@@ -95,7 +95,7 @@ const Leadership = () => {
                   loading='lazy'
                   className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
               </div>
 
               {/* Content */}
@@ -111,7 +111,7 @@ const Leadership = () => {
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-2xl border border-white/20 flex items-center justify-center text-gray-400 hover:text-white hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300 group/icon"
                   >
-                    <Instagram className="w-5 h-5 group-hover/icon:scale-110 transition-transform" />
+                    <Instagram className="w-5 h-5 text-purple-600 group-hover/icon:scale-110 transition-transform" />
                   </Link>}
 
                   {leader.x && <Link
@@ -120,7 +120,7 @@ const Leadership = () => {
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-2xl border border-white/20 flex items-center justify-center text-gray-400 hover:text-white hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300 group/icon"
                   >
-                    <X className="w-5 h-5 group-hover/icon:scale-110 transition-transform" />
+                    <X className="w-5 h-5 text-white group-hover/icon:scale-110 transition-transform" />
                   </Link>}
 
                   {leader.linkedin && <Link
@@ -129,7 +129,7 @@ const Leadership = () => {
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-2xl border border-white/20 flex items-center justify-center text-gray-400 hover:text-white hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300 group/icon"
                   >
-                    <Linkedin className="w-5 h-5 group-hover/icon:scale-110 transition-transform" />
+                    <Linkedin className="w-5 h-5 text-blue-600 group-hover/icon:scale-110 transition-transform" />
                   </Link>}
                 </div>
               </div>

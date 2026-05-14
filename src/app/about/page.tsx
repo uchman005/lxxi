@@ -9,6 +9,7 @@ import Mission from '@/components/about/Mission';
 import TimelineSection from '@/components/about/TimeLine';
 import OurPrinciples from '@/components/about/OurPrinciples';
 import Leadership from '@/components/about/Leadership';
+import TrustedPartners from '@/components/home/TrustedPartners';
 
 export const metadata: Metadata = {
   title: 'LXXI Limited — Defined by Purpose. Driven by Africa.',
@@ -32,6 +33,7 @@ export default function Home() {
       <TimelineSection />
       <OurPrinciples />
       <Leadership />
+      <TrustedPartners title='Trusted by Institutions that matter' />
       {/* <GlobalConnectivity /> */}
       {/* <Legacy /> */}
       {/* <DynamicMarkets /> */}
