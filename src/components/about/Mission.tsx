@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Mission() {
     return (
         <section className="relative bg-[#F2EAE0] py-16 md:py-24 px-6 md:px-20 overflow-hidden">
@@ -27,10 +29,12 @@ export default function Mission() {
                 {/* Image */}
                 <div className="flex justify-center md:justify-start">
                     <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-lg">
-                        <img
+                        <Image
                             src="/about_mission.png"
                             alt="Africa network map"
                             className="w-full h-full object-cover"
+                            width={500}
+                            height={500}
                         />
                     </div>
                 </div>
