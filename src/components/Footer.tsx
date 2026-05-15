@@ -54,22 +54,24 @@ export default function Footer() {
                 <MapPin size={14} className="text-[#E5B63E] mt-0.5 shrink-0" />
                 <span>Abuja, Nigeria</span>
               </div>
-              <div className="flex items-center gap-2.5 text-gray-400 text-sm">
-                <Link
-                  href="mailto:business@lxxi.africa"
-                >
-                  <Mail size={14} className="text-[#E5B63E] shrink-0" />
-                  <span>business@lxxi.africa</span>
-                </Link>
-              </div>
-              <div className="flex items-center gap-2.5 text-gray-400 text-sm">
-                <Link
-                  href="tel:+2348025021402"
-                >
-                  <Phone size={14} className="text-[#E5B63E] shrink-0" />
-                  <span>+234 80 2502 1402</span>
-                </Link>
-              </div>
+
+              <Link
+                className="flex items-center gap-2.5 text-gray-400 text-sm"
+                href="mailto:business@lxxi.africa"
+              >
+                <Mail size={14} className="text-[#E5B63E] shrink-0" />
+                <span>business@lxxi.africa</span>
+              </Link>
+
+
+              <Link
+                href="tel:+2348025021402"
+                className="flex items-center gap-2.5 text-gray-400 text-sm"
+              >
+                <Phone size={14} className="text-[#E5B63E] shrink-0" />
+                <span>+234 80 2502 1402</span>
+              </Link>
+
             </div>
 
             {/* Social icons */}
