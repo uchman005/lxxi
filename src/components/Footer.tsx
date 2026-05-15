@@ -55,12 +55,20 @@ export default function Footer() {
                 <span>Abuja, Nigeria</span>
               </div>
               <div className="flex items-center gap-2.5 text-gray-400 text-sm">
-                <Mail size={14} className="text-[#E5B63E] shrink-0" />
-                <span>info@lxxi.africa</span>
+                <Link
+                  href="mailto:business@lxxi.africa"
+                >
+                  <Mail size={14} className="text-[#E5B63E] shrink-0" />
+                  <span>business@lxxi.africa</span>
+                </Link>
               </div>
               <div className="flex items-center gap-2.5 text-gray-400 text-sm">
-                <Phone size={14} className="text-[#E5B63E] shrink-0" />
-                <span>+234 814 094 0409</span>
+                <Link
+                  href="tel:+2348025021402"
+                >
+                  <Phone size={14} className="text-[#E5B63E] shrink-0" />
+                  <span>+234 80 2502 1402</span>
+                </Link>
               </div>
             </div>
 
