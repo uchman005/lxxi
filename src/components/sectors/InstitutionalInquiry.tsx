@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { toast } from 'sonner';
 import { MapPin, Mail, CheckCircle2 } from 'lucide-react';
 
 const sectorOptions = [
@@ -12,18 +13,22 @@ const sectorOptions = [
 
 const initialForm = {
     fullName: "",
+    email: "",
     organization: "",
     sector: sectorOptions[0],
     message: "",
 };
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 const inputClasses =
     "w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-black placeholder:text-gray-400 " +
     "focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 transition-all duration-200";
 
-const InstitutionalInquiry = () => {
+const InstitutionalInquiry = ({ source = 'sectors' }: { source?: string }) => {
     const [form, setForm] = useState(initialForm);
     const [submitted, setSubmitted] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState("");
 
     const handleChange = (
@@ -34,13 +39,35 @@ const InstitutionalInquiry = () => {
         if (error) setError("");
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!form.fullName.trim() || !form.organization.trim() || !form.message.trim()) {
             setError("Please complete all required fields.");
             return;
         }
-        setSubmitted(true);
+        if (!EMAIL_RE.test(form.email.trim())) {
+            setError("Please enter a valid email address.");
+            return;
+        }
+
+        setError("");
+        setSubmitting(true);
+        const toastId = toast.loading("Submitting your inquiry...");
+        try {
+            const res = await fetch("/api/inquiry", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ...form, source }),
+            });
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(data.error || "Submission failed.");
+            toast.success("Inquiry received — check your inbox for confirmation.", { id: toastId });
+            setSubmitted(true);
+        } catch (err) {
+            toast.error(err instanceof Error ? err.message : "Something went wrong.", { id: toastId });
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -81,10 +108,10 @@ const InstitutionalInquiry = () => {
                                             Email
                                         </div>
                                         <a
-                                            href="mailto:info@lxxi.io"
+                                            href="mailto:business@lxxi.africa"
                                             className="text-sm font-medium text-gray-800 hover:text-amber-500 transition-colors"
                                         >
-                                            info@lxxi.io
+                                            business@lxxi.africa
                                         </a>
                                     </div>
                                 </div>
@@ -135,6 +162,23 @@ const InstitutionalInquiry = () => {
                                             />
                                         </div>
                                         <div>
+                                            <label htmlFor="email" className="block text-xs uppercase tracking-widest text-gray-500 font-semibold mb-2">
+                                                Email
+                                            </label>
+                                            <input
+                                                id="email"
+                                                name="email"
+                                                type="email"
+                                                value={form.email}
+                                                onChange={handleChange}
+                                                placeholder="you@company.com"
+                                                className={inputClasses}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                        <div>
                                             <label htmlFor="organization" className="block text-xs uppercase tracking-widest text-gray-500 font-semibold mb-2">
                                                 Organization
                                             </label>
@@ -148,25 +192,24 @@ const InstitutionalInquiry = () => {
                                                 className={inputClasses}
                                             />
                                         </div>
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="sector" className="block text-xs uppercase tracking-widest text-gray-500 font-semibold mb-2">
-                                            Sector of Interest
-                                        </label>
-                                        <select
-                                            id="sector"
-                                            name="sector"
-                                            value={form.sector}
-                                            onChange={handleChange}
-                                            className={inputClasses}
-                                        >
-                                            {sectorOptions.map((option) => (
-                                                <option key={option} value={option}>
-                                                    {option}
-                                                </option>
-                                            ))}
-                                        </select>
+                                        <div>
+                                            <label htmlFor="sector" className="block text-xs uppercase tracking-widest text-gray-500 font-semibold mb-2">
+                                                Sector of Interest
+                                            </label>
+                                            <select
+                                                id="sector"
+                                                name="sector"
+                                                value={form.sector}
+                                                onChange={handleChange}
+                                                className={inputClasses}
+                                            >
+                                                {sectorOptions.map((option) => (
+                                                    <option key={option} value={option}>
+                                                        {option}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div>
@@ -190,10 +233,11 @@ const InstitutionalInquiry = () => {
 
                                     <button
                                         type="submit"
+                                        disabled={submitting}
                                         className="w-full bg-amber-400 hover:bg-amber-300 transition-all duration-300 text-black
-                                   font-bold uppercase tracking-wider px-6 py-4 rounded-xl text-sm"
+                                   font-bold uppercase tracking-wider px-6 py-4 rounded-xl text-sm disabled:opacity-60 disabled:cursor-not-allowed"
                                     >
-                                        Submit Consultation Request
+                                        {submitting ? "Submitting..." : "Submit Consultation Request"}
                                     </button>
                                 </form>
                             )}

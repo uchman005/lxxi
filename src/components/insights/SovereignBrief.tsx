@@ -1,14 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import { toast } from 'sonner';
 import { CheckCircle2 } from 'lucide-react';
 
 const SovereignBrief = () => {
     const [email, setEmail] = useState("");
     const [submitted, setSubmitted] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState("");
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
         if (!valid) {
@@ -16,7 +18,23 @@ const SovereignBrief = () => {
             return;
         }
         setError("");
-        setSubmitted(true);
+        setSubmitting(true);
+        const toastId = toast.loading("Subscribing...");
+        try {
+            const res = await fetch("/api/subscribe", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: email.trim() }),
+            });
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(data.error || "Subscription failed.");
+            toast.success(data.message || "You're subscribed — welcome to the Brief.", { id: toastId });
+            setSubmitted(true);
+        } catch (err) {
+            toast.error(err instanceof Error ? err.message : "Something went wrong.", { id: toastId });
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -61,10 +79,11 @@ const SovereignBrief = () => {
                                         />
                                         <button
                                             type="submit"
+                                            disabled={submitting}
                                             className="shrink-0 bg-amber-400 hover:bg-amber-300 transition-all duration-300 text-black
-                                 font-bold uppercase tracking-wider px-7 py-3.5 rounded-xl text-sm"
+                                 font-bold uppercase tracking-wider px-7 py-3.5 rounded-xl text-sm disabled:opacity-60 disabled:cursor-not-allowed"
                                         >
-                                            Subscribe
+                                            {submitting ? "..." : "Subscribe"}
                                         </button>
                                     </div>
                                     {error && <p className="text-sm text-red-400 font-medium mt-2">{error}</p>}

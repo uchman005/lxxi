@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  serverExternalPackages: ['mongoose', 'bcryptjs', 'zeptomail'],
   images: {
     qualities: [75, 85, 90],
     remotePatterns: [
