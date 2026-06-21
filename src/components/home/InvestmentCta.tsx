@@ -13,7 +13,7 @@ const InvestmentTeamCTA = () => {
 
                 {/* Main Heading */}
                 <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-8" data-aos="fade-up" data-aos-delay="100">
-                    Speak With Our <span className="text-amber-400">Investment Team</span>
+                    Speak With Our <span className="text-amber-400 font-playfair">Investment Team</span>
                 </h2>
 
                 {/* Description */}

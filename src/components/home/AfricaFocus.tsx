@@ -35,7 +35,7 @@ const AfricaFocusSection = () => {
                     </span>
                     <h2 className="text-5xl md:text-6xl font-bold text-white leading-tight max-w-4xl">
                         Present Across{' '}
-                        <span className="text-amber-400">Africa&apos;s Most Dynamic Markets</span>
+                        <span className="text-amber-400 font-playfair">Africa&apos;s Most Dynamic Markets</span>
                     </h2>
                     <p className="mt-6 text-gray-400 max-w-2xl text-lg">
                         Africa represents one of the most compelling long-term investment landscapes globally.
@@ -47,7 +47,7 @@ const AfricaFocusSection = () => {
                 <div className="relative h-[380px] md:h-[420px] mb-20 flex justify-center" data-aos="fade-up" data-aos-delay="200">
                     <div className="relative w-full max-w-3xl">
                         {/* Placeholder Map - Replace with real SVG or image if needed */}
-                        <div className="absolute inset-0 bg-[radial-gradient(#ffffff10_1px,transparent_1px)] [background-size:40px_40px] rounded-3xl border border-white/10" />
+                        <div className="absolute inset-0 bg-[radial-gradient(#ffffff10_1px,transparent_1px)] bg-size-[40px_40px] rounded-3xl border border-white/10" />
 
                         {/* Africa Map Silhouette (using Tailwind + simple CSS) */}
                         <div className="absolute inset-0 flex items-center justify-center">
@@ -79,7 +79,7 @@ const AfricaFocusSection = () => {
                             key={index}
                             className={`group p-8 rounded-3xl border transition-all duration-500 h-full flex flex-col
                 ${region.highlight
-                                    ? 'border-amber-400/50 bg-gradient-to-b from-amber-400/10 to-transparent'
+                                    ? 'border-amber-400/50 bg-linear-to-b from-amber-400/10 to-transparent'
                                     : 'border-white/10 hover:border-white/30 bg-white/5 hover:bg-white/10'}`}
                         >
                             <h3 className={`text-2xl font-semibold mb-6 transition-colors duration-300

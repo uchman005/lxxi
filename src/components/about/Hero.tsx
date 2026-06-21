@@ -22,11 +22,11 @@ export default function Hero() {
         />
         {/* Multi-layer dark overlay */}
         <div className="absolute inset-0 bg-[#0E1012]/70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0E1012]/30 via-transparent to-[#0E1012]/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0E1012]/80 via-[#0E1012]/30 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#0E1012]/30 via-transparent to-[#0E1012]/80" />
+        <div className="absolute inset-0 bg-linear-to-r from-[#0E1012]/80 via-[#0E1012]/30 to-transparent" />
 
         {/* Gold accent glow */}
-        <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#E5B63E]/8 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-48 bg-linear-to-t from-[#E5B63E]/8 to-transparent" />
         <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#E5B63E]/5 rounded-full blur-3xl" />
       </div>
 
@@ -112,7 +112,7 @@ export default function Hero() {
                     data-aos="fade-up"
                     data-aos-delay={400 + i * 100}
                   >
-                    <div className="w-10 h-10 rounded bg-[rgba(229,182,62,0.12)] flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 rounded bg-[rgba(229,182,62,0.12)] flex items-center justify-center shrink-0">
                       <Icon size={18} className="text-[#E5B63E]" strokeWidth={1.8} />
                     </div>
                     <div>

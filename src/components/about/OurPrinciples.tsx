@@ -83,7 +83,7 @@ const OurPrinciples = () => {
                                 </p>
 
                                 {/* Subtle bottom accent */}
-                                <div className="h-0.5 w-12 bg-gradient-to-r from-amber-400 to-transparent mt-8" />
+                                <div className="h-0.5 w-12 bg-linear-to-r from-amber-400 to-transparent mt-8" />
                             </div>
                         );
                     })}

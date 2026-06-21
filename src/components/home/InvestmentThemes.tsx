@@ -1,24 +1,25 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const InvestmentThemes = () => {
     const themes = [
         {
             category: "INFRASTRUCTURE",
-            image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop",
+            image: "/charts/1.png",
             tag: "Real Assets • 2024",
             title: "East Africa Infrastructure Corridor",
             description: "A multi-jurisdictional investment targeting transport, energy, and logistics networks across Kenya, Tanzania, and Rwanda — anchored by long-term concession agreements.",
         },
         {
             category: "AGRI-INDUSTRIAL",
-            image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop",
+            image: "/charts/2.png",
             tag: "Real Assets • 2024",
             title: "West Africa Agri-Industrial Initiative",
             description: "Scaling productive agricultural land and processing infrastructure across Nigeria, Ghana, and Côte d'Ivoire — capturing compounding value from field to market.",
         },
         {
             category: "PRIVATE CREDIT",
-            image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop",
+            image: "/charts/3.png",
             tag: "Alternative Investments • 2025",
             title: "Pan-African Private Credit Fund",
             description: "A dedicated credit vehicle providing structured debt to mid-market African businesses, filling the critical gap left by retreating traditional lenders across the continent.",
@@ -35,18 +36,18 @@ const InvestmentThemes = () => {
                             FEATURED
                         </span>
                         <h2 className="text-5xl md:text-6xl font-bold text-white mt-2">
-                            Investment <span className="text-amber-400">Themes</span>
+                            Investment <span className="text-amber-400 font-playfair">Themes</span>
                         </h2>
                     </div>
 
-                    <a
+                    <Link
                         href="/insights"
                         className="group flex items-center gap-3 text-white hover:text-amber-400 transition-colors mt-6 md:mt-0"
                         data-aos="fade-left"
                     >
                         <span className="text-lg font-medium">VIEW ALL INSIGHTS</span>
                         <span className="text-2xl group-hover:translate-x-2 transition-transform">→</span>
-                    </a>
+                    </Link>
                 </div>
 
                 {/* Themes Grid */}
@@ -63,11 +64,12 @@ const InvestmentThemes = () => {
                                 <Image
                                     src={theme.image}
                                     alt={theme.title}
-                                    fill
+                                    width={400}
+                                    height={400}
                                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                                 />
                                 {/* Overlay Gradient */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+                                <div className="absolute inset-0 bg-linear-to-t from-black via-black/70 to-transparent" />
 
                                 {/* Category Label */}
                                 <div className="absolute top-6 left-6 bg-black/70 backdrop-blur-md px-5 py-1.5 rounded-full text-xs font-semibold tracking-widest text-amber-400 border border-amber-400/30">

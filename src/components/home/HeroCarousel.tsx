@@ -117,7 +117,7 @@ const HeroCarousel: FC = () => {
                                 priority
                             />
                             {/* Dark Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/40" />
+                            <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/60 to-black/40" />
                         </div>
 
                         {/* Content Container */}
