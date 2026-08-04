@@ -18,7 +18,7 @@ const leaders = [
     title: "Executive Assistant to the MD",
     image: "/people/victor.jpg",
     x: "",
-    instagram: "",
+    instagram: "https://www.instagram.com/victor_sunn",
     linkedin: ""
   },
   {
