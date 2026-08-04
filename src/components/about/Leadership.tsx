@@ -6,8 +6,8 @@ const leaders = [
   {
     id: 1,
     name: "Stephanie Amarachi Patman",
-    title: "Managing Director & CEO",
-    image: "/people/amara.jpg",
+    title: "Managing Director",
+    image: "/people/stephanie.jpg",
     x: "",
     instagram: "https://www.instagram.com/amara.patman",
     linkedin: "https://www.linkedin.com/in/stephanie-amarachi-patman-767992170/"
@@ -15,7 +15,7 @@ const leaders = [
   {
     id: 2,
     name: "Victor Ogah Owoicho",
-    title: "Marketing Director",
+    title: "Executive Assistant to the MD",
     image: "/people/victor.jpg",
     x: "",
     instagram: "",
@@ -23,31 +23,75 @@ const leaders = [
   },
   {
     id: 3,
-    name: "Mgbebu Hilda Chiamaka",
-    title: "Head of Finance and Investments",
-    image: "/people/hilda.jpg",
+    name: "Minnel Tobore Abu",
+    title: "Executive Director, Operations",
+    image: "/people/minnel.jpg",
     x: "",
     instagram: "",
-    linkedin: "https://www.linkedin.com/in/hilda-mgbebu-112b34194/"
+    linkedin: ""
   },
-
   {
     id: 4,
+    name: "Barr. Joan China Anaba",
+    title: "Director, Legal, Risk & Compliance",
+    image: "/people/joan.jpg",
+    x: "",
+    instagram: "https://www.instagram.com/terrific_joan_/",
+    linkedin: "https://www.linkedin.com/in/joan-anaba-210775232/"
+  },
+  {
+    id: 5,
+    name: "Bashir Musa",
+    title: "Executive Director, Business Development",
+    image: "/people/bashir.jpg",
+    x: "",
+    instagram: "",
+    linkedin: ""
+  },
+  {
+    id: 6,
     name: "Ochapa Mercy Ochiba",
-    title: "Head of Operations",
+    title: "Director, Human Capital & Administration",
     image: "/people/mercy.jpg",
     x: "",
     instagram: "https://www.instagram.com/ochiba25/",
     linkedin: ""
   },
   {
-    id: 5,
-    name: "Barr. Joan China Anaba",
-    title: "Head of Legal & Compliance",
-    image: "/people/joan.jpg",
+    id: 7,
+    name: "Adamu Abdul Rasheed",
+    title: "Head, Real Estate & Brokerage Services",
+    image: "/people/adamu.jpg",
     x: "",
-    instagram: "https://www.instagram.com/terrific_joan_/",
-    linkedin: "https://www.linkedin.com/in/joan-anaba-210775232/"
+    instagram: "",
+    linkedin: ""
+  },
+  {
+    id: 8,
+    name: "Favor Habu",
+    title: "Head, Capital Goods, Trade & Infrastructure",
+    image: "/people/favor.jpg",
+    x: "",
+    instagram: "",
+    linkedin: ""
+  },
+  {
+    id: 9,
+    name: "Obiefuna Marcel",
+    title: "Director, Innovation & Technology",
+    image: "/people/marcel.jpg",
+    x: "",
+    instagram: "",
+    linkedin: ""
+  },
+  {
+    id: 10,
+    name: "Udu Daberechi Patience",
+    title: "Director, Brand Strategy & Marketing",
+    image: "/people/daberechi.jpg",
+    x: "",
+    instagram: "",
+    linkedin: ""
   },
 ];
 
@@ -76,9 +120,62 @@ const Leadership = () => {
           </p>
         </div>
 
+        {/* Managing Director - featured */}
+        {leaders.filter((leader) => leader.id === 1).map((leader) => (
+          <div
+            key={leader.id}
+            className="group mt-16 bg-[#111111] rounded-3xl overflow-hidden border border-white/10 hover:border-amber-400/30 transition-all duration-500 grid grid-cols-1 md:grid-cols-2"
+            data-aos="fade-up"
+          >
+            <div className="relative h-96 md:h-full min-h-96 overflow-hidden">
+              <Image
+                src={leader.image}
+                alt={leader.name}
+                width={800}
+                height={800}
+                loading="lazy"
+                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent md:hidden" />
+            </div>
+            <div className="p-8 md:p-12 flex flex-col justify-center">
+              <h3 className="text-2xl font-semibold mb-1">{leader.name}</h3>
+              <p className="text-amber-400 text-sm mb-8">{leader.title}</p>
+              <div className="flex items-center gap-4">
+                {leader.instagram && <Link
+                  href={leader.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-2xl border border-white/20 flex items-center justify-center text-gray-400 hover:text-white hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300 group/icon"
+                >
+                  <Instagram className="w-5 h-5 text-purple-600 group-hover/icon:scale-110 transition-transform" />
+                </Link>}
+
+                {leader.x && <Link
+                  href={leader.x}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-2xl border border-white/20 flex items-center justify-center text-gray-400 hover:text-white hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300 group/icon"
+                >
+                  <X className="w-5 h-5 text-white group-hover/icon:scale-110 transition-transform" />
+                </Link>}
+
+                {leader.linkedin && <Link
+                  href={leader.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-2xl border border-white/20 flex items-center justify-center text-gray-400 hover:text-white hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300 group/icon"
+                >
+                  <Linkedin className="w-5 h-5 text-blue-600 group-hover/icon:scale-110 transition-transform" />
+                </Link>}
+              </div>
+            </div>
+          </div>
+        ))}
+
         {/* Leadership Cards Grid - 3 per row on large screens */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {leaders.map((leader, index) => (
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {leaders.filter((leader) => leader.id !== 1).map((leader, index) => (
             <div
               key={leader.id}
               className="group bg-[#111111] rounded-3xl overflow-hidden border border-white/10 hover:border-amber-400/30 transition-all duration-500 hover:-translate-y-2"
