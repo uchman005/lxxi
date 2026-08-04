@@ -27,8 +27,8 @@ const leaders = [
     title: "Executive Director, Operations",
     image: "/people/minnel.jpg",
     x: "",
-    instagram: "",
-    linkedin: ""
+    instagram: "https://www.instagram.com/theminneltobore",
+    linkedin: "https://www.linkedin.com/in/minnel-tobore-abu-6020233b2"
   },
   {
     id: 4,
@@ -53,9 +53,9 @@ const leaders = [
     name: "Ochapa Mercy Ochiba",
     title: "Director, Human Capital & Administration",
     image: "/people/mercy.jpg",
-    x: "",
+    x: "https://x.com/OchibaOchapa",
     instagram: "https://www.instagram.com/ochiba25/",
-    linkedin: ""
+    linkedin: "https://www.linkedin.com/in/ochapa-mercy-ochiba-478b62161"
   },
   {
     id: 7,
@@ -72,26 +72,26 @@ const leaders = [
     title: "Head, Capital Goods, Trade & Infrastructure",
     image: "/people/favor.jpg",
     x: "",
-    instagram: "",
-    linkedin: ""
+    instagram: "https://www.instagram.com/melaninsplash",
+    linkedin: "https://www.linkedin.com/in/habu-favour-3051241b3"
   },
   {
     id: 9,
     name: "Obiefuna Marcel",
     title: "Director, Innovation & Technology",
     image: "/people/marcel.jpg",
-    x: "",
+    x: "https://x.com/MarcelObiefuna",
     instagram: "",
-    linkedin: ""
+    linkedin: "https://www.linkedin.com/in/obiefuna-marcel"
   },
   {
     id: 10,
     name: "Udu Daberechi Patience",
     title: "Director, Brand Strategy & Marketing",
     image: "/people/daberechi.jpg",
-    x: "",
-    instagram: "",
-    linkedin: ""
+    x: "https://x.com/amaka_udu",
+    instagram: "https://www.instagram.com/amakaudu",
+    linkedin: "https://www.linkedin.com/in/udu-daberechi-p-0097411ab"
   },
 ];
 
