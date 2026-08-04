@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: 'Insights — LXXI Limited',
     description:
       'Institutional intelligence on African capital markets — research reports, trends, and analysis.',
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 

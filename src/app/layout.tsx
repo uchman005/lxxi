@@ -39,13 +39,13 @@ export const metadata: Metadata = {
     url: 'https://lxxi.africa',
     title: 'LXXI Limited — Defined by Purpose. Driven by Africa.',
     description: "Pioneering alternative investments across Africa's most dynamic markets.",
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'LXXI Limited — Defined by Purpose. Driven by Africa.',
     description: "Pioneering alternative investments across Africa's most dynamic markets.",
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 

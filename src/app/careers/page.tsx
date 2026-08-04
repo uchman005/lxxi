@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Careers — LXXI Limited',
     description: 'Build a career with purpose across our African hubs.',
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 

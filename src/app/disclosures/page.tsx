@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Disclosures — LXXI Limited',
     description: 'Important regulatory and risk disclosures from LXXI Limited.',
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 

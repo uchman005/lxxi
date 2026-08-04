@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'For Investors — LXXI Limited',
     description: 'A bridge between global capital and African growth. Partner with LXXI.',
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 

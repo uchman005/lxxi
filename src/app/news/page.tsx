@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Newsroom — LXXI Limited',
     description: 'News, press releases, and announcements from LXXI Limited.',
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 

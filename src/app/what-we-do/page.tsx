@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'What We Do — LXXI Limited',
     description: 'Four disciplines, one conviction — how LXXI deploys capital across Africa.',
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 

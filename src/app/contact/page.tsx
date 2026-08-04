@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact — LXXI Limited',
     description: "Let's start a conversation. Reach the LXXI team across our African hubs.",
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Investment Opportunities — LXXI Limited',
     description: 'Selectively sourced, rigorously structured opportunities for qualified investors.',
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 

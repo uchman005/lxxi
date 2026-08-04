@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Cookie Policy — LXXI Limited',
     description: 'How LXXI uses cookies and how you can manage your preferences.',
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 

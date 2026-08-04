@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Our Approach — LXXI Limited',
     description: 'A disciplined process, repeated with rigour — how LXXI creates long-term value.',
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 

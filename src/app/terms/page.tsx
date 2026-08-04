@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Terms of Service — LXXI Limited',
     description: 'The terms governing your use of the LXXI website and services.',
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 

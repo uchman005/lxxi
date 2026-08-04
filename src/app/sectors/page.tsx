@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: 'Investment Sectors — LXXI Limited',
     description:
       'Investing where Africa is building tomorrow. Discover the sectors driving resilient, long-term growth.',
-    images: ['/og-image.jpg'],
+    images: ['/logo.png'],
   },
 };
 
