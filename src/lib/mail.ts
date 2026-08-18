@@ -179,6 +179,121 @@ export async function sendWelcomeEmail(email: string): Promise<void> {
     });
 }
 
+export async function sendEngagementMandateEmails(data: {
+    fullName: string;
+    rcNumber: string;
+    registeredAddress: string;
+    contactPerson: string;
+    email: string;
+    phone: string;
+    businessProfile: string;
+    engagementTypes: string[];
+    otherEngagementType: string;
+    transactionDescription: string;
+    servicesRequired: string[];
+    excludedServices: string;
+    capacityDocuments: string[];
+    capacityTimeframe: string;
+    escrowAgreeable: 'yes' | 'no';
+    collateralDescription: string;
+    securityDocumentsNote: string;
+    authorizedSignatoryName: string;
+    exclusivityPeriod: string;
+    validityPeriod: string;
+    validityOther: string;
+    additionalInstructions: string;
+    designation: string;
+    declarationDate: string;
+}): Promise<void> {
+    const firstName = data.fullName.split(' ')[0] || 'there';
+    const periodLabel = (p: string) => (p === 'other' ? esc(data.validityOther || 'Other') : `${esc(p)} days`);
+
+    const row = (label: string, value: string) =>
+        value
+            ? `<tr><td style="padding:6px 12px 6px 0;color:#888;font-size:13px;white-space:nowrap;vertical-align:top;">${esc(
+                  label,
+              )}</td><td style="padding:6px 0;color:#e5e5e5;font-size:13px;">${value}</td></tr>`
+            : '';
+
+    const tagList = (items: string[]) =>
+        items.length
+            ? items
+                  .map(
+                      (i) =>
+                          `<span style="display:inline-block;margin:2px 4px 2px 0;padding:3px 10px;background:rgba(229,182,62,0.12);border:1px solid rgba(229,182,62,0.3);border-radius:999px;color:${GOLD};font-size:12px;">${esc(
+                              i,
+                          )}</span>`,
+                  )
+                  .join('')
+            : '<span style="color:#666;">None selected</span>';
+
+    await safeSend({
+        to: data.email,
+        toName: data.fullName,
+        subject: 'We received your Client Engagement Form — LXXI Limited',
+        html: renderEmail(
+            `Thank you, ${esc(firstName)}.`,
+            `<p>We've received your Client Engagement and Transaction Mandate Form and our team will review it for suitability and alignment before proceeding.</p>
+       <p style="margin-top:16px;color:#888;">What happens next: our internal committee reviews your submission, and — if aligned — we'll issue a Letter of Instruction request and, upon acceptance, an engagement fee invoice. No introductions, documentation, or negotiations commence until the engagement fee is received.</p>
+       <p style="margin-top:16px;">You can review our full <a href="https://lxxi.africa/terms-of-engagement" style="color:${GOLD};">Terms of Engagement</a> at any time.</p>`,
+        ),
+    });
+
+    await safeSend({
+        to: NOTIFY_TO,
+        toName: 'LXXI Team',
+        subject: `New engagement mandate: ${data.fullName}`,
+        replyTo: { address: data.email, name: data.fullName },
+        html: renderEmail(
+            'New Client Engagement Form submission',
+            `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        ${row('Client', esc(data.fullName))}
+        ${row('RC Number', esc(data.rcNumber))}
+        ${row('Address', esc(data.registeredAddress))}
+        ${row('Contact person', esc(data.contactPerson))}
+        ${row('Email', esc(data.email))}
+        ${row('Phone', esc(data.phone))}
+        ${row('Profile', esc(data.businessProfile))}
+       </table>
+       <p style="margin:18px 0 6px;color:#fff;font-size:13px;font-weight:bold;">Type of engagement</p>
+       ${tagList(data.engagementTypes)}
+       ${data.otherEngagementType ? `<p style="margin-top:6px;color:#cfcfcf;font-size:13px;">Other: ${esc(data.otherEngagementType)}</p>` : ''}
+       ${data.transactionDescription ? `<blockquote style="margin:10px 0 0;padding:12px 14px;background:rgba(255,255,255,0.04);border-left:3px solid ${GOLD};border-radius:6px;color:#cfcfcf;font-size:13px;">${esc(data.transactionDescription)}</blockquote>` : ''}
+
+       <p style="margin:18px 0 6px;color:#fff;font-size:13px;font-weight:bold;">Scope of services</p>
+       ${tagList(data.servicesRequired)}
+       ${data.excludedServices ? `<p style="margin-top:6px;color:#cfcfcf;font-size:13px;">Excluded: ${esc(data.excludedServices)}</p>` : ''}
+
+       <p style="margin:18px 0 6px;color:#fff;font-size:13px;font-weight:bold;">Transaction capacity & protocol</p>
+       ${tagList(data.capacityDocuments)}
+       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:6px;">
+        ${row('Capacity timeframe', esc(data.capacityTimeframe))}
+        ${row('Escrow agreeable', data.escrowAgreeable === 'yes' ? 'Yes' : 'No')}
+       </table>
+
+       ${
+           data.collateralDescription || data.securityDocumentsNote
+               ? `<p style="margin:18px 0 6px;color:#fff;font-size:13px;font-weight:bold;">Security details</p>
+       <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        ${row('Proposed collateral', esc(data.collateralDescription))}
+        ${row('Supporting documents', esc(data.securityDocumentsNote))}
+       </table>`
+               : ''
+       }
+
+       <p style="margin:18px 0 6px;color:#fff;font-size:13px;font-weight:bold;">Declarations</p>
+       <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        ${row('Authorized signatory', esc(data.authorizedSignatoryName))}
+        ${row('Exclusivity period', `${esc(data.exclusivityPeriod)} days`)}
+        ${row('Validity period', periodLabel(data.validityPeriod))}
+        ${row('Designation', esc(data.designation))}
+        ${row('Date', esc(data.declarationDate))}
+       </table>
+       ${data.additionalInstructions ? `<p style="margin-top:12px;color:#888;font-size:13px;">Additional instructions:</p><blockquote style="margin:6px 0 0;padding:12px 14px;background:rgba(255,255,255,0.04);border-left:3px solid ${GOLD};border-radius:6px;color:#cfcfcf;font-size:13px;">${esc(data.additionalInstructions)}</blockquote>` : ''}`,
+        ),
+    });
+}
+
 export async function sendRegistrationEmail(data: {
     fullName: string;
     email: string;

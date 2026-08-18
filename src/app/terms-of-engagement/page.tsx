@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import LegalLayout from '@/components/legal/LegalLayout';
+import EngagementMandateForm from '@/components/legal/EngagementMandateForm';
 
 export const metadata: Metadata = {
   title: 'Terms of Engagement',
@@ -21,6 +22,7 @@ export default function TermsOfEngagement() {
       lastUpdated="5 January 2026"
       downloadHref="/documents/LXXI-Terms-of-Engagement.pdf"
       downloadLabel="Download PDF"
+      extraTocLink={{ id: 'engagement-form', label: 'Start Your Engagement' }}
       intro="This page outlines LXXI Limited's standard client engagement process, from initial engagement through transaction execution and post-transaction relationship. It applies to all brokerage, facilitation, and advisory services provided by LXXI Limited, except asset/property management, asset acquisition or disposal, and commodity trade services. It is designed to provide clarity, transparency, and confidence to clients, facilitators, partners, and counterparties engaging or referring LXXI's services."
       sections={[
         {
@@ -87,6 +89,7 @@ export default function TermsOfEngagement() {
             'Asset class, geography, and estimated transaction value',
             'Target timelines and commercial expectations',
           ],
+          note: 'You can complete the Client Engagement Form digitally below — no need to download or print anything.',
         },
         {
           id: 'letter-of-instruction',
@@ -189,6 +192,8 @@ export default function TermsOfEngagement() {
           note: 'For asset recovery, fees range between 5–10% of the total value of the asset recovered, depending on the complexity of the transaction.',
         },
       ]}
-    />
+    >
+      <EngagementMandateForm />
+    </LegalLayout>
   );
 }

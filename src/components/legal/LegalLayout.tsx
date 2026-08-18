@@ -1,4 +1,5 @@
-import { ShieldAlert, Download } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { ShieldAlert, Download, ArrowDown } from 'lucide-react';
 
 export type LegalTable = {
     headers: string[];
@@ -24,6 +25,10 @@ type LegalLayoutProps = {
     downloadHref?: string;
     downloadLabel?: string;
     hideDraftNotice?: boolean;
+    /** Rendered as an extra, highlighted entry in the "On this page" TOC, linking to an anchor in `children`. */
+    extraTocLink?: { id: string; label: string };
+    /** Rendered after the numbered sections, still inside the page's <main>. */
+    children?: ReactNode;
 };
 
 const LegalLayout = ({
@@ -35,6 +40,8 @@ const LegalLayout = ({
     downloadHref,
     downloadLabel = 'Download PDF',
     hideDraftNotice = true,
+    extraTocLink,
+    children,
 }: LegalLayoutProps) => {
     return (
         <main className="bg-white text-black">
@@ -104,6 +111,16 @@ const LegalLayout = ({
                                     ))}
                                 </ul>
                             </nav>
+
+                            {extraTocLink && (
+                                <a
+                                    href={`#${extraTocLink.id}`}
+                                    className="mt-6 flex items-center justify-between gap-3 bg-black text-white rounded-xl px-4 py-3.5 hover:bg-amber-400 hover:text-black transition-colors group"
+                                >
+                                    <span className="text-sm font-semibold">{extraTocLink.label}</span>
+                                    <ArrowDown className="w-4 h-4 shrink-0 group-hover:translate-y-0.5 transition-transform" />
+                                </a>
+                            )}
 
                             {/* Draft notice */}
                             {!hideDraftNotice && (
@@ -226,6 +243,8 @@ const LegalLayout = ({
                     </div>
                 </div>
             </section>
+
+            {children}
         </main>
     );
 };
