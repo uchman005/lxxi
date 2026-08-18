@@ -34,7 +34,7 @@ const LegalLayout = ({
     sections,
     downloadHref,
     downloadLabel = 'Download PDF',
-    hideDraftNotice = false,
+    hideDraftNotice = true,
 }: LegalLayoutProps) => {
     return (
         <main className="bg-white text-black">
