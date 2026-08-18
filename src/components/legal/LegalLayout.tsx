@@ -1,9 +1,18 @@
-import { ShieldAlert } from 'lucide-react';
+import { ShieldAlert, Download } from 'lucide-react';
+
+export type LegalTable = {
+    headers: string[];
+    rows: string[][];
+};
 
 export type LegalSection = {
     id: string;
     heading: string;
-    body: string[];
+    body?: string[];
+    list?: string[];
+    orderedList?: string[];
+    note?: string;
+    table?: LegalTable;
 };
 
 type LegalLayoutProps = {
@@ -12,9 +21,21 @@ type LegalLayoutProps = {
     lastUpdated: string;
     intro: string;
     sections: LegalSection[];
+    downloadHref?: string;
+    downloadLabel?: string;
+    hideDraftNotice?: boolean;
 };
 
-const LegalLayout = ({ title, accent, lastUpdated, intro, sections }: LegalLayoutProps) => {
+const LegalLayout = ({
+    title,
+    accent,
+    lastUpdated,
+    intro,
+    sections,
+    downloadHref,
+    downloadLabel = 'Download PDF',
+    hideDraftNotice = false,
+}: LegalLayoutProps) => {
     return (
         <main className="bg-white text-black">
             {/* Header */}
@@ -36,9 +57,24 @@ const LegalLayout = ({ title, accent, lastUpdated, intro, sections }: LegalLayou
                             </>
                         )}
                     </h1>
-                    <p className="text-gray-400 text-sm" data-aos="fade-up" data-aos-delay="100">
-                        Last updated: {lastUpdated}
-                    </p>
+                    <div
+                        className="flex flex-wrap items-center gap-4"
+                        data-aos="fade-up"
+                        data-aos-delay="100"
+                    >
+                        <p className="text-gray-400 text-sm">Last updated: {lastUpdated}</p>
+
+                        {downloadHref && (
+                            <a
+                                href={downloadHref}
+                                download
+                                className="inline-flex items-center gap-2 bg-amber-400 text-black text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-amber-300 transition-colors"
+                            >
+                                <Download className="w-4 h-4" />
+                                {downloadLabel}
+                            </a>
+                        )}
+                    </div>
                 </div>
             </section>
 
@@ -70,13 +106,15 @@ const LegalLayout = ({ title, accent, lastUpdated, intro, sections }: LegalLayou
                             </nav>
 
                             {/* Draft notice */}
-                            <div className="mt-8 flex gap-3 bg-amber-400/10 border border-amber-400/30 rounded-xl p-4">
-                                <ShieldAlert className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-                                <p className="text-xs text-gray-600 leading-relaxed">
-                                    This is a working draft for illustrative purposes and should be reviewed
-                                    by qualified legal counsel before publication.
-                                </p>
-                            </div>
+                            {!hideDraftNotice && (
+                                <div className="mt-8 flex gap-3 bg-amber-400/10 border border-amber-400/30 rounded-xl p-4">
+                                    <ShieldAlert className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+                                    <p className="text-xs text-gray-600 leading-relaxed">
+                                        This is a working draft for illustrative purposes and should be reviewed
+                                        by qualified legal counsel before publication.
+                                    </p>
+                                </div>
+                            )}
                         </div>
                     </aside>
 
@@ -96,11 +134,78 @@ const LegalLayout = ({ title, accent, lastUpdated, intro, sections }: LegalLayou
                                         {section.heading}
                                     </h2>
                                     <div className="space-y-4 max-w-3xl">
-                                        {section.body.map((paragraph, i) => (
+                                        {section.body?.map((paragraph, i) => (
                                             <p key={i} className="text-gray-600 leading-relaxed">
                                                 {paragraph}
                                             </p>
                                         ))}
+
+                                        {section.list && (
+                                            <ul className="space-y-2.5">
+                                                {section.list.map((item, i) => (
+                                                    <li key={i} className="flex gap-3 text-gray-600 leading-relaxed">
+                                                        <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
+                                                        <span>{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+
+                                        {section.orderedList && (
+                                            <ol className="space-y-3">
+                                                {section.orderedList.map((item, i) => (
+                                                    <li key={i} className="flex gap-4 text-gray-600 leading-relaxed">
+                                                        <span className="w-7 h-7 rounded-full bg-black text-amber-400 text-xs font-semibold flex items-center justify-center shrink-0 tabular-nums">
+                                                            {i + 1}
+                                                        </span>
+                                                        <span className="pt-0.5">{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ol>
+                                        )}
+
+                                        {section.note && (
+                                            <div className="flex gap-3 bg-amber-400/10 border border-amber-400/30 rounded-xl p-4">
+                                                <ShieldAlert className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+                                                <p className="text-sm text-gray-700 leading-relaxed">{section.note}</p>
+                                            </div>
+                                        )}
+
+                                        {section.table && (
+                                            <div className="overflow-x-auto rounded-xl border border-black/10">
+                                                <table className="w-full text-left border-collapse">
+                                                    <thead>
+                                                        <tr className="bg-black text-white">
+                                                            {section.table.headers.map((header, i) => (
+                                                                <th
+                                                                    key={i}
+                                                                    className="px-5 py-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap"
+                                                                >
+                                                                    {header}
+                                                                </th>
+                                                            ))}
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {section.table.rows.map((row, i) => (
+                                                            <tr
+                                                                key={i}
+                                                                className="border-t border-black/10 even:bg-black/[0.02]"
+                                                            >
+                                                                {row.map((cell, j) => (
+                                                                    <td
+                                                                        key={j}
+                                                                        className="px-5 py-3 text-gray-600 whitespace-nowrap"
+                                                                    >
+                                                                        {cell}
+                                                                    </td>
+                                                                ))}
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             ))}

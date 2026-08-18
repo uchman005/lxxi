@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { toast } from 'sonner';
 import { MapPin, Mail, Phone, Clock, CheckCircle2 } from 'lucide-react';
 
@@ -85,9 +86,18 @@ const ContactSection = () => {
                             Let&apos;s start a{' '}
                             <span className="font-playfair italic text-amber-400">conversation.</span>
                         </h2>
-                        <p className="text-gray-400 leading-relaxed mb-10 max-w-md">
+                        <p className="text-gray-400 leading-relaxed mb-6 max-w-md">
                             Whether you&apos;re an investor, partner, or prospective team member, our team
                             responds to every enquiry with discretion and care.
+                        </p>
+
+                        <p className="text-gray-500 text-sm leading-relaxed mb-10 max-w-md">
+                            For brokerage, facilitation, or advisory mandates, engagements formally begin with
+                            a Client Engagement Form and Letter of Instruction. See our{' '}
+                            <Link href="/terms-of-engagement" className="text-amber-400 hover:text-amber-300 underline transition-colors">
+                                Terms of Engagement
+                            </Link>{' '}
+                            for the full process and fee policy.
                         </p>
 
                         <div className="space-y-5">

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { toast } from 'sonner';
 import { MapPin, Mail, CheckCircle2 } from 'lucide-react';
 
@@ -81,9 +82,18 @@ const InstitutionalInquiry = ({ source = 'sectors' }: { source?: string }) => {
                                 Institutional{" "}
                                 <span className="font-playfair italic text-amber-400">Inquiry</span>
                             </h2>
-                            <p className="text-gray-600 leading-relaxed mb-10 max-w-sm">
+                            <p className="text-gray-600 leading-relaxed mb-6 max-w-sm">
                                 Engage our sector specialists to discuss bespoke brokerage opportunities and
                                 managed asset portfolios tailored to institutional requirements.
+                            </p>
+
+                            <p className="text-gray-500 text-sm leading-relaxed mb-10 max-w-sm">
+                                Mandates formally begin with a Client Engagement Form and Letter of Instruction,
+                                and are subject to our engagement fee policy. See our{' '}
+                                <Link href="/terms-of-engagement" className="text-amber-500 hover:text-amber-600 underline transition-colors">
+                                    Terms of Engagement
+                                </Link>{' '}
+                                for details.
                             </p>
 
                             <div className="space-y-5">

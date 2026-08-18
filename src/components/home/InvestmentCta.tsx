@@ -43,6 +43,15 @@ const InvestmentTeamCTA = () => {
                 <p className="text-gray-400 text-base tracking-wide" data-aos="fade-up" data-aos-delay="400">
                     Institutional investors &nbsp;·&nbsp; Family offices &nbsp;·&nbsp; High-net-worth individuals
                 </p>
+
+                {/* Engagement terms note */}
+                <p className="text-gray-500 text-xs tracking-wide mt-6" data-aos="fade-up" data-aos-delay="500">
+                    All engagements are subject to our{' '}
+                    <a href="/terms-of-engagement" className="text-amber-400/80 hover:text-amber-400 underline transition-colors">
+                        Terms of Engagement
+                    </a>
+                    .
+                </p>
             </div>
 
             {/* Subtle Background Accent */}

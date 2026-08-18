@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { path: '/contact', priority: 0.6, changeFrequency: 'yearly' },
         { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' },
         { path: '/terms', priority: 0.3, changeFrequency: 'yearly' },
+        { path: '/terms-of-engagement', priority: 0.4, changeFrequency: 'yearly' },
         { path: '/cookies', priority: 0.3, changeFrequency: 'yearly' },
         { path: '/disclosures', priority: 0.3, changeFrequency: 'yearly' },
     ];

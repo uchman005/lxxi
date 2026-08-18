@@ -20,6 +20,7 @@ const footerLinks = {
   Legal: [
     { label: 'Privacy Policy', href: '/privacy' },
     { label: 'Terms of Service', href: '/terms' },
+    { label: 'Terms of Engagement', href: '/terms-of-engagement' },
     { label: 'Cookie Policy', href: '/cookies' },
     { label: 'Disclosures', href: '/disclosures' },
   ],
@@ -124,7 +125,11 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} LXXI Limited. All rights reserved.
           </p>
           <p className="text-gray-600 text-xs max-w-2xl">
-            This material is for qualified investors only and does not constitute investment advice or a solicitation to invest. Capital at risk. Past performance is not indicative of future results. LXXI Capital Management is a registered investment manager.
+            This material is for qualified investors only and does not constitute investment advice or a solicitation to invest. Capital at risk. Past performance is not indicative of future results. LXXI Capital Management is a registered investment manager. All brokerage, facilitation, and advisory engagements are subject to our{' '}
+            <Link href="/terms-of-engagement" className="text-gray-500 underline hover:text-[#E5B63E] transition-colors">
+              Terms of Engagement
+            </Link>
+            , including a mandatory engagement fee.
           </p>
         </div>
       </div>
