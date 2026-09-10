@@ -2,7 +2,11 @@ import { SendMailClient } from 'zeptomail';
 
 const FROM = process.env.MAIL_FROM || 'noreply@lxxi.africa';
 const FROM_NAME = process.env.MAIL_FROM_NAME || 'LXXI Limited';
-const NOTIFY_TO = process.env.MAIL_NOTIFY_TO || 'business@lxxi.africa';
+// MAIL_NOTIFY_TO may be a single address or a comma-separated list (e.g. "info@lxxi.africa,business@lxxi.africa").
+const NOTIFY_TO_RAW = process.env.MAIL_NOTIFY_TO || 'business@lxxi.africa';
+const NOTIFY_TO_LIST = NOTIFY_TO_RAW.split(',').map((s) => s.trim()).filter(Boolean);
+// Single display address — used in the footer's "contact us" mailto link.
+const NOTIFY_TO = NOTIFY_TO_LIST[0] || 'business@lxxi.africa';
 
 let client: SendMailClient | null = null;
 
@@ -19,28 +23,29 @@ function getClient(): SendMailClient | null {
  * mail outage cannot break a database write or a user's form submission.
  */
 async function safeSend(opts: {
-    to: string;
+    to: string | string[];
     toName?: string;
     subject: string;
     html: string;
     replyTo?: { address: string; name?: string };
 }): Promise<boolean> {
+    const recipients = Array.isArray(opts.to) ? opts.to : [opts.to];
     const c = getClient();
     if (!c) {
-        console.warn('[mail] ZEPTOMAIL_TOKEN not set — skipping email to', opts.to);
+        console.warn('[mail] ZEPTOMAIL_TOKEN not set — skipping email to', recipients.join(', '));
         return false;
     }
     try {
         await c.sendMail({
             from: { address: FROM, name: FROM_NAME },
-            to: [{ email_address: { address: opts.to, name: opts.toName } }],
-            ...(opts.replyTo ? { reply_to: [{ email_address: opts.replyTo }] } : {}),
+            to: recipients.map((address) => ({ email_address: { address, name: opts.toName } })),
+            ...(opts.replyTo ? { reply_to: [opts.replyTo] } : {}),
             subject: opts.subject,
             htmlbody: opts.html,
         });
         return true;
     } catch (err) {
-        console.error('[mail] send failed to', opts.to, err);
+        console.error('[mail] send failed to', recipients.join(', '), err);
         return false;
     }
 }
@@ -48,29 +53,53 @@ async function safeSend(opts: {
 const GOLD = '#E5B63E';
 const BG = '#0A0A0A';
 const CARD = '#111111';
+const SITE_URL = 'https://lxxi.africa';
+const LOGO_URL = `${SITE_URL}/logo.png`;
+// Disclaimer always points to info@ regardless of MAIL_NOTIFY_TO's configured list.
+const DISCLAIMER_CONTACT = 'info@lxxi.africa';
 
-/** Branded dark/gold HTML email shell with inline styles for client compatibility. */
+/** Branded, image-lit HTML email shell with inline styles for client compatibility. */
 function renderEmail(heading: string, bodyHtml: string): string {
     return `
   <div style="margin:0;padding:0;background:${BG};">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${BG};padding:32px 0;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${BG};padding:44px 0;">
       <tr><td align="center">
-        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:${CARD};border:1px solid rgba(229,182,62,0.15);border-radius:16px;overflow:hidden;font-family:Arial,Helvetica,sans-serif;">
-          <tr><td style="padding:28px 32px;border-bottom:1px solid rgba(255,255,255,0.06);">
-            <span style="color:${GOLD};font-size:20px;font-weight:bold;letter-spacing:2px;">LXXI</span>
-            <span style="color:#888;font-size:12px;letter-spacing:3px;text-transform:uppercase;"> &nbsp;Limited</span>
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;font-family:Arial,Helvetica,sans-serif;">
+
+          <!-- Logo -->
+          <tr><td align="center" style="padding:0 24px 28px;">
+            <img src="${LOGO_URL}" width="132" height="74" alt="LXXI Limited" style="display:block;border:0;border-radius:10px;" />
           </td></tr>
-          <tr><td style="padding:36px 32px;">
-            <h1 style="margin:0 0 18px;color:#ffffff;font-size:22px;font-weight:bold;">${heading}</h1>
-            <div style="color:#b8b8b8;font-size:15px;line-height:1.7;">${bodyHtml}</div>
+
+          <!-- Card -->
+          <tr><td style="background:${CARD};border:1px solid rgba(229,182,62,0.18);border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,0.45);">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+              <tr><td style="height:4px;line-height:4px;font-size:0;background-color:${GOLD};">&nbsp;</td></tr>
+              <tr><td style="padding:40px 36px 4px;">
+                <h1 style="margin:0 0 20px;color:#ffffff;font-family:Georgia,'Times New Roman',serif;font-size:24px;font-weight:normal;font-style:italic;letter-spacing:0.2px;">${heading}</h1>
+                <div style="color:#b8b8b8;font-size:15px;line-height:1.75;">${bodyHtml}</div>
+              </td></tr>
+              <tr><td style="padding:8px 36px 32px;">
+                <div style="height:1px;line-height:1px;font-size:0;background-color:rgba(255,255,255,0.08);margin:20px 0 24px;">&nbsp;</div>
+                <p style="margin:0;color:#777;font-size:12px;line-height:1.8;">
+                  <strong style="color:#aaa;">LXXI Limited</strong> &middot; Abuja, Nigeria<br/>
+                  <a href="mailto:${NOTIFY_TO}" style="color:${GOLD};text-decoration:none;">${NOTIFY_TO}</a>
+                  &nbsp;&middot;&nbsp;
+                  <a href="${SITE_URL}" style="color:${GOLD};text-decoration:none;">lxxi.africa</a>
+                </p>
+              </td></tr>
+            </table>
           </td></tr>
-          <tr><td style="padding:24px 32px;border-top:1px solid rgba(255,255,255,0.06);">
-            <p style="margin:0;color:#666;font-size:12px;line-height:1.6;">
-              LXXI Limited &middot; Abuja, Nigeria &middot;
-              <a href="mailto:${NOTIFY_TO}" style="color:${GOLD};text-decoration:none;">${NOTIFY_TO}</a><br/>
-              This message was sent in response to an enquiry on lxxi.africa.
+
+          <!-- Disclaimer -->
+          <tr><td align="center" style="padding:24px 32px 0;">
+            <p style="margin:0;color:#4d4d4d;font-size:10px;line-height:1.7;">
+              This is an automated message from LXXI Limited related to an action taken on lxxi.africa.
+              If you did not initiate this request, please disregard this email or contact us at
+              <a href="mailto:${DISCLAIMER_CONTACT}" style="color:#666;text-decoration:underline;">${DISCLAIMER_CONTACT}</a>.
             </p>
           </td></tr>
+
         </table>
       </td></tr>
     </table>
@@ -109,7 +138,7 @@ export async function sendInquiryEmails(data: {
     });
 
     await safeSend({
-        to: NOTIFY_TO,
+        to: NOTIFY_TO_LIST,
         toName: 'LXXI Team',
         subject: `New inquiry: ${data.organization}`,
         replyTo: { address: data.email, name: data.fullName },
@@ -151,7 +180,7 @@ export async function sendContactEmails(data: {
     });
 
     await safeSend({
-        to: NOTIFY_TO,
+        to: NOTIFY_TO_LIST,
         toName: 'LXXI Team',
         subject: `New contact message${data.subject ? `: ${data.subject}` : ''}`,
         replyTo: { address: data.email, name: data.name },
@@ -240,7 +269,7 @@ export async function sendEngagementMandateEmails(data: {
     });
 
     await safeSend({
-        to: NOTIFY_TO,
+        to: NOTIFY_TO_LIST,
         toName: 'LXXI Team',
         subject: `New engagement mandate: ${data.fullName}`,
         replyTo: { address: data.email, name: data.fullName },
@@ -311,7 +340,7 @@ export async function sendRegistrationEmail(data: {
     });
 
     await safeSend({
-        to: NOTIFY_TO,
+        to: NOTIFY_TO_LIST,
         toName: 'LXXI Team',
         subject: `New portal registration: ${data.fullName}`,
         html: renderEmail(

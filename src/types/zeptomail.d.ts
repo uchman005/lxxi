@@ -11,7 +11,10 @@ declare module 'zeptomail' {
     interface SendMailPayload {
         from: ZeptoAddress;
         to: ZeptoRecipient[];
-        reply_to?: ZeptoRecipient[];
+        // Unlike `to`/`cc`/`bcc`, ZeptoMail's API takes reply_to as a flat
+        // address list — not wrapped in `email_address` — omitting the
+        // wrapper here previously caused "Mandatory Field missing" (TM_3201).
+        reply_to?: ZeptoAddress[];
         subject: string;
         htmlbody?: string;
         textbody?: string;
