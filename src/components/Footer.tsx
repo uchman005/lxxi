@@ -21,6 +21,7 @@ const footerLinks = {
     { label: 'Privacy Policy', href: '/privacy' },
     { label: 'Terms of Service', href: '/terms' },
     { label: 'Terms of Engagement', href: '/terms-of-engagement' },
+    { label: 'Trade Engagement Protocol', href: '/trade-engagement-protocol' },
     { label: 'Cookie Policy', href: '/cookies' },
     { label: 'Disclosures', href: '/disclosures' },
   ],

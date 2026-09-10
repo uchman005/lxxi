@@ -6,6 +6,12 @@ export type LegalTable = {
     rows: string[][];
 };
 
+export type LegalSubsection = {
+    heading: string;
+    body?: string[];
+    list?: string[];
+};
+
 export type LegalSection = {
     id: string;
     heading: string;
@@ -14,6 +20,10 @@ export type LegalSection = {
     orderedList?: string[];
     note?: string;
     table?: LegalTable;
+    /** Grouped labeled sub-lists within one section, e.g. "Corporate" / "Authority" / "Product". */
+    subsections?: LegalSubsection[];
+    /** A short, high-emphasis statement (a core rule or principle) rendered in a black/amber card. Each entry is its own line. */
+    highlight?: string[];
 };
 
 type LegalLayoutProps = {
@@ -157,6 +167,16 @@ const LegalLayout = ({
                                             </p>
                                         ))}
 
+                                        {section.highlight && (
+                                            <div className="bg-black rounded-xl p-6 space-y-2">
+                                                {section.highlight.map((line, i) => (
+                                                    <p key={i} className="text-amber-400 font-bold text-lg leading-snug">
+                                                        {line}
+                                                    </p>
+                                                ))}
+                                            </div>
+                                        )}
+
                                         {section.list && (
                                             <ul className="space-y-2.5">
                                                 {section.list.map((item, i) => (
@@ -179,6 +199,33 @@ const LegalLayout = ({
                                                     </li>
                                                 ))}
                                             </ol>
+                                        )}
+
+                                        {section.subsections && (
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                                                {section.subsections.map((sub, i) => (
+                                                    <div key={i}>
+                                                        <h3 className="text-sm font-semibold uppercase tracking-wider text-black mb-3">
+                                                            {sub.heading}
+                                                        </h3>
+                                                        {sub.body?.map((paragraph, j) => (
+                                                            <p key={j} className="text-gray-600 leading-relaxed mb-2">
+                                                                {paragraph}
+                                                            </p>
+                                                        ))}
+                                                        {sub.list && (
+                                                            <ul className="space-y-2">
+                                                                {sub.list.map((item, j) => (
+                                                                    <li key={j} className="flex gap-2.5 text-gray-600 text-sm leading-relaxed">
+                                                                        <span className="mt-2 w-1 h-1 rounded-full bg-amber-400 shrink-0" />
+                                                                        <span>{item}</span>
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        )}
+                                                    </div>
+                                                ))}
+                                            </div>
                                         )}
 
                                         {section.note && (

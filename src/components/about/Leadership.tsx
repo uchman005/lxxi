@@ -62,8 +62,8 @@ const leaders = [
     name: "Adamu Abdul Rasheed",
     title: "Head, Real Estate & Brokerage Services",
     image: "/people/adamu.jpg",
-    x: "",
-    instagram: "",
+    x: "https://x.com/Abdulrasheny",
+    instagram: "https://www.instagram.com/abdulrasheed8512",
     linkedin: ""
   },
   {
