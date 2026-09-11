@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { connectDB } from '@/lib/db';
-import Inquiry from '@/models/Inquiry';
+import { getDb } from '@/db';
+import { inquiries } from '@/db/schema';
 import { sendInquiryEmails } from '@/lib/mail';
 
 export const runtime = 'nodejs';
@@ -24,11 +24,15 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Please provide a valid email address.' }, { status: 400 });
         }
 
-        await connectDB();
-        const inquiry = await Inquiry.create({ fullName, email, organization, sector, message, source });
+        const db = await getDb();
+        const inquiry = await db
+            .insert(inquiries)
+            .values({ fullName, email, organization, sector, message, source })
+            .returning()
+            .get();
         await sendInquiryEmails({ fullName, email, organization, sector, message, source });
 
-        return NextResponse.json({ ok: true, id: inquiry._id }, { status: 201 });
+        return NextResponse.json({ ok: true, id: inquiry.id }, { status: 201 });
     } catch (err) {
         console.error('[api/inquiry]', err);
         return NextResponse.json({ error: 'Something went wrong. Please try again.' }, { status: 500 });

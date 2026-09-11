@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { connectDB } from '@/lib/db';
-import ContactMessage from '@/models/ContactMessage';
+import { getDb } from '@/db';
+import { contactMessages } from '@/db/schema';
 import { sendContactEmails } from '@/lib/mail';
 
 export const runtime = 'nodejs';
@@ -22,11 +22,11 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Please provide a valid email address.' }, { status: 400 });
         }
 
-        await connectDB();
-        const doc = await ContactMessage.create({ name, email, subject, message });
+        const db = await getDb();
+        const doc = await db.insert(contactMessages).values({ name, email, subject, message }).returning().get();
         await sendContactEmails({ name, email, subject, message });
 
-        return NextResponse.json({ ok: true, id: doc._id }, { status: 201 });
+        return NextResponse.json({ ok: true, id: doc.id }, { status: 201 });
     } catch (err) {
         console.error('[api/contact]', err);
         return NextResponse.json({ error: 'Something went wrong. Please try again.' }, { status: 500 });

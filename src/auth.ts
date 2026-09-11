@@ -1,8 +1,9 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
-import { connectDB } from '@/lib/db';
-import User from '@/models/User';
+import { eq } from 'drizzle-orm';
+import { getDb } from '@/db';
+import { users } from '@/db/schema';
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
     session: { strategy: 'jwt' },
@@ -19,15 +20,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 const password = String(credentials?.password ?? '');
                 if (!email || !password) return null;
 
-                await connectDB();
-                const user = await User.findOne({ email }).select('+passwordHash');
+                const db = await getDb();
+                const user = await db.select().from(users).where(eq(users.email, email)).get();
                 if (!user?.passwordHash) return null;
 
                 const valid = await bcrypt.compare(password, user.passwordHash);
                 if (!valid) return null;
 
                 return {
-                    id: user._id.toString(),
+                    id: String(user.id),
                     name: user.fullName,
                     email: user.email,
                     role: user.role,

@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
-import { connectDB } from '@/lib/db';
-import User from '@/models/User';
+import { eq } from 'drizzle-orm';
+import { getDb } from '@/db';
+import { users } from '@/db/schema';
 import { sendRegistrationEmail } from '@/lib/mail';
 
 export const runtime = 'nodejs';
@@ -25,15 +26,15 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Password must be at least 8 characters.' }, { status: 400 });
         }
 
-        await connectDB();
+        const db = await getDb();
 
-        const existing = await User.findOne({ email });
+        const existing = await db.select().from(users).where(eq(users.email, email)).get();
         if (existing) {
             return NextResponse.json({ error: 'An account with this email already exists.' }, { status: 409 });
         }
 
         const passwordHash = await bcrypt.hash(password, 12);
-        await User.create({ fullName, email, passwordHash });
+        await db.insert(users).values({ fullName, email, passwordHash }).run();
         await sendRegistrationEmail({ fullName, email });
 
         return NextResponse.json({ ok: true }, { status: 201 });

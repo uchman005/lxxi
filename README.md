@@ -1,8 +1,8 @@
 # LXXI Limited — Website
 
 The public website for LXXI Limited, an African alternative investments firm.
-Built with Next.js 16 (App Router, Turbopack), Tailwind CSS v4, MongoDB
-(Mongoose), and Auth.js (NextAuth).
+Built with Next.js 16 (App Router, Turbopack), Tailwind CSS v4, SQLite
+(Drizzle ORM), and Auth.js (NextAuth).
 
 ## Getting started
 
@@ -31,17 +31,37 @@ Copy `.env.example` to `.env.local` and fill it in.
 
 | Variable | Purpose |
 |---|---|
-| `MONGODB_URI` | MongoDB connection string (e.g. from MongoDB Atlas) |
+| `DATABASE_URL` | Path to the local SQLite file. Defaults to `./data/lxxi.db` if unset |
 | `ZEPTOMAIL_TOKEN` | ZeptoMail API token — must include the `Zoho-enczapikey ` prefix |
 | `ZEPTOMAIL_URL` | ZeptoMail API host, e.g. `api.zeptomail.com/` |
 | `MAIL_FROM` | Sending address (domain must be verified in ZeptoMail) |
 | `MAIL_FROM_NAME` | Sending display name |
-| `MAIL_NOTIFY_TO` | Internal recipient for contact/inquiry notifications |
+| `MAIL_NOTIFY_TO` | Internal recipient(s) for contact/inquiry notifications — a single address or a comma-separated list |
 | `AUTH_SECRET` | Auth.js session secret — generate with `npx auth secret` |
 
-`connectDB()` (`src/lib/db.ts`) connects lazily, only inside route handlers —
+`getDb()` (`src/db/index.ts`) connects lazily, only inside route handlers —
 never at module top-level — so `bun run build` succeeds even with no
-environment configured.
+environment configured. It's a real on-disk SQLite file (never `:memory:`),
+created automatically on first access, with any pending migrations under
+`drizzle/` applied at the same time.
+
+### Database (Drizzle ORM + SQLite)
+
+Schema lives in `src/db/schema.ts`. After changing it:
+
+```bash
+bun run db:generate   # writes a new SQL migration under drizzle/
+```
+
+Commit the generated migration file — it's applied automatically the next
+time `getDb()` runs (including in production), no manual migration step
+needed on deploy. `bun run db:studio` opens Drizzle Studio, a local GUI for
+browsing the database.
+
+The database file (`data/lxxi.db` by default) is gitignored and lives outside
+version control. Because the CI/CD deploy pulls new code with `git reset
+--hard`, which never touches untracked files, the database persists across
+deploys without any special handling.
 
 ## Deployment
 
@@ -92,7 +112,7 @@ See `.github/workflows/deploy.yml` for the full rollback logic.
 
 - [Next.js 16](https://nextjs.org/docs) (App Router, Turbopack, `next/font`)
 - [Tailwind CSS v4](https://tailwindcss.com/docs)
-- [MongoDB](https://www.mongodb.com/) via [Mongoose](https://mongoosejs.com/)
+- [SQLite](https://www.sqlite.org/) via [Drizzle ORM](https://orm.drizzle.team/) and [@libsql/client](https://github.com/tursodatabase/libsql-client-ts)
 - [Auth.js (NextAuth)](https://authjs.dev/) — credentials-based session auth
 - [ZeptoMail](https://www.zoho.com/zeptomail/) for transactional email
 - TypeScript throughout; ESLint via `eslint-config-next`

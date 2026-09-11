@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { connectDB } from '@/lib/db';
-import EngagementMandate from '@/models/EngagementMandate';
+import { getDb } from '@/db';
+import { engagementMandates } from '@/db/schema';
 import { sendEngagementMandateEmails } from '@/lib/mail';
 
 export const runtime = 'nodejs';
@@ -84,11 +84,11 @@ export async function POST(req: Request) {
             validityPeriod: data.validityPeriod as ValidityPeriod,
         };
 
-        await connectDB();
-        const doc = await EngagementMandate.create(record);
+        const db = await getDb();
+        const doc = await db.insert(engagementMandates).values(record).returning().get();
         await sendEngagementMandateEmails(record);
 
-        return NextResponse.json({ ok: true, id: doc._id }, { status: 201 });
+        return NextResponse.json({ ok: true, id: doc.id }, { status: 201 });
     } catch (err) {
         console.error('[api/engagement-mandate]', err);
         return NextResponse.json({ error: 'Something went wrong. Please try again.' }, { status: 500 });

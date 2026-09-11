@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
-import { connectDB } from '@/lib/db';
-import Subscriber from '@/models/Subscriber';
+import { eq } from 'drizzle-orm';
+import { getDb } from '@/db';
+import { subscribers } from '@/db/schema';
 import { sendWelcomeEmail } from '@/lib/mail';
 
 export const runtime = 'nodejs';
@@ -16,18 +17,20 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Please provide a valid email address.' }, { status: 400 });
         }
 
-        await connectDB();
+        const db = await getDb();
 
-        const existing = await Subscriber.findOne({ email });
+        const existing = await db.select().from(subscribers).where(eq(subscribers.email, email)).get();
         if (existing) {
             if (existing.status === 'unsubscribed') {
-                existing.status = 'active';
-                await existing.save();
+                await db.update(subscribers)
+                    .set({ status: 'active', updatedAt: new Date() })
+                    .where(eq(subscribers.email, email))
+                    .run();
             }
             return NextResponse.json({ ok: true, message: "You're already subscribed." }, { status: 200 });
         }
 
-        await Subscriber.create({ email });
+        await db.insert(subscribers).values({ email }).run();
         await sendWelcomeEmail(email);
 
         return NextResponse.json({ ok: true }, { status: 201 });
