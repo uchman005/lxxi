@@ -1,4 +1,18 @@
 export default function Board(){
+    const boardMembers = [
+    {
+        name: "Prof. Chinua Eze",
+        title: "BOARD CHAIRMAN",
+    },
+    {
+        name: "Fatima Al-Sayed",
+        title: "INDEPENDENT DIRECTOR",
+    },
+    {
+        name: "Dr. Samuel Bediako",
+        title: "AUDIT COMMITTEE CHAIR",
+    },
+];
     return (
           <div className="bg-black py-16 px-6">
                         <div className="max-w-7xl mx-auto">

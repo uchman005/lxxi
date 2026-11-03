@@ -1,21 +1,6 @@
 import Image from "next/image";
 // import Board from "./Board";
 
-const boardMembers = [
-    {
-        name: "Prof. Chinua Eze",
-        title: "BOARD CHAIRMAN",
-    },
-    {
-        name: "Fatima Al-Sayed",
-        title: "INDEPENDENT DIRECTOR",
-    },
-    {
-        name: "Dr. Samuel Bediako",
-        title: "AUDIT COMMITTEE CHAIR",
-    },
-];
-
 const BoardAndTestimonials = () => {
     return (
         <>
