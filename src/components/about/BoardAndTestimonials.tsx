@@ -1,11 +1,11 @@
 import Image from "next/image";
-// import Board from "./Board";
+import Board from "./Board";
 
 const BoardAndTestimonials = () => {
     return (
         <>
             {/* Board of Directors Section */}
-            {/* <Board /> */}
+            <Board />
             {/* Testimonials Section */}
             <div className="bg-white py-20 px-6">
                 <div className="max-w-7xl mx-auto">
