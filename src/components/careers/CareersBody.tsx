@@ -1,4 +1,4 @@
-import { Compass, Users, Sparkles, MapPin, ArrowRight, Briefcase, Clock } from 'lucide-react';
+import { Compass, Users, Sparkles, Mail, ArrowRight } from 'lucide-react';
 
 const values = [
     {
@@ -9,7 +9,7 @@ const values = [
     {
         icon: Users,
         title: 'Partnership',
-        description: 'We win together — with our investors, our portfolio, and each other.',
+        description: 'We win together — with our clients, our partners, and each other.',
     },
     {
         icon: Sparkles,
@@ -18,20 +18,24 @@ const values = [
     },
 ];
 
-const positions = [
-    { role: 'Investment Associate', location: 'Johannesburg, SA', type: 'Full-time', team: 'Investments' },
-    { role: 'Structured Finance Analyst', location: 'Lagos, Nigeria', type: 'Full-time', team: 'Capital Markets' },
-    { role: 'Real Assets Manager', location: 'Nairobi, Kenya', type: 'Full-time', team: 'Asset Management' },
-    { role: 'Investor Relations Lead', location: 'Remote · Africa', type: 'Full-time', team: 'Distribution' },
-    { role: 'Research Analyst, Macro', location: 'Johannesburg, SA', type: 'Contract', team: 'Research' },
+const CAREERS_EMAIL = 'business@lxxi.africa';
+const careersMailto = `mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent('Career enquiry — LXXI Limited')}`;
+
+const teams = [
+    'Real Estate & Brokerage',
+    'Capital Goods, Trade & Infrastructure',
+    'Business Development',
+    'Legal, Risk & Compliance',
+    'Operations',
+    'Innovation & Technology',
 ];
 
 const benefits = [
-    'Competitive, performance-linked compensation',
-    'Carried interest and co-investment access',
-    'Pan-African mobility across our hubs',
-    'Continuous learning and CFA sponsorship',
-    'Private healthcare and wellbeing support',
+    'Exposure to complex, cross-border transactions',
+    'Work across five business areas and four African regions',
+    'Learn directly from an experienced leadership team',
+    'A verification-first culture built on integrity',
+    'Room to grow with a young, ambitious company',
     'A flat, meritocratic culture',
 ];
 
@@ -83,49 +87,46 @@ const CareersBody = () => {
                         <div className="flex items-center gap-3 mb-5" data-aos="fade-right">
                             <div className="h-px w-12 bg-amber-400" />
                             <span className="text-amber-400 text-sm tracking-[3px] font-medium uppercase">
-                                Open Positions
+                                Join Us
                             </span>
                         </div>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" data-aos="fade-up">
-                            Roles open across{' '}
-                            <span className="font-playfair italic text-amber-400">our hubs.</span>
+                            No open roles right now —{' '}
+                            <span className="font-playfair italic text-amber-400">but talk to us.</span>
                         </h2>
                     </div>
 
-                    <div className="space-y-4">
-                        {positions.map((position, index) => (
+                    <div
+                        className="bg-white border border-black/5 rounded-3xl p-8 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+                        data-aos="fade-up"
+                    >
+                        <div className="lg:col-span-7">
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                We don&apos;t have advertised vacancies at the moment, but we&apos;re always keen to hear
+                                from exceptional people. Send your CV with a short note on the area you&apos;d like to
+                                work in, and we&apos;ll keep it on file for future openings.
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                {teams.map((team) => (
+                                    <span
+                                        key={team}
+                                        className="text-xs font-semibold text-gray-600 bg-gray-100 border border-black/5 px-3 py-1.5 rounded-full"
+                                    >
+                                        {team}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="lg:col-span-5 lg:justify-self-end">
                             <a
-                                key={position.role}
-                                href="/contact"
-                                className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-black/5 rounded-2xl p-6 md:p-7 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-0.5 transition-all duration-300"
-                                data-aos="fade-up"
-                                data-aos-delay={index * 70}
+                                href={careersMailto}
+                                className="group inline-flex items-center gap-3 bg-black text-white text-sm font-semibold px-6 py-4 rounded-full hover:bg-amber-400 hover:text-black transition-colors"
                             >
-                                <div>
-                                    <h3 className="text-xl font-semibold mb-2 group-hover:text-amber-500 transition-colors">
-                                        {position.role}
-                                    </h3>
-                                    <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-sm text-gray-500">
-                                        <span className="flex items-center gap-1.5">
-                                            <Briefcase className="w-4 h-4 text-amber-500" />
-                                            {position.team}
-                                        </span>
-                                        <span className="flex items-center gap-1.5">
-                                            <MapPin className="w-4 h-4 text-amber-500" />
-                                            {position.location}
-                                        </span>
-                                        <span className="flex items-center gap-1.5">
-                                            <Clock className="w-4 h-4 text-amber-500" />
-                                            {position.type}
-                                        </span>
-                                    </div>
-                                </div>
-                                <span className="inline-flex items-center gap-2 text-amber-500 text-sm font-bold uppercase tracking-wider group-hover:gap-3 transition-all shrink-0">
-                                    Apply
-                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                </span>
+                                <Mail className="w-4 h-4" />
+                                Send your CV to {CAREERS_EMAIL}
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </a>
-                        ))}
+                        </div>
                     </div>
                 </div>
             </section>

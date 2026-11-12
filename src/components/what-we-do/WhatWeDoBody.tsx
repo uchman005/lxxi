@@ -1,42 +1,48 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Layers, Building2, Banknote, Network } from 'lucide-react';
+import { ArrowRight, Building2, Banknote, Network, Ship, Handshake } from 'lucide-react';
 
 const strategies = [
     {
-        icon: Building2,
-        title: 'Private Equity',
-        description: 'Control and growth investments in established, cash-generative businesses across the continent.',
-        image: '/carousel2.png',
-    },
-    {
-        icon: Layers,
-        title: 'Real Estate',
-        description: 'Income-producing and development real assets in high-demand urban and logistics corridors.',
-        image: '/carousel3.png',
-    },
-    {
         icon: Banknote,
-        title: 'Private Credit',
-        description: 'Bespoke, secured lending and structured financing for resilient, asset-backed borrowers.',
+        title: 'Private Equity & Private Credit',
+        description: 'Connecting businesses seeking investment or financing with institutional investors, private capital providers, lenders, and strategic investment partners.',
         image: '/service-hero.jpg',
     },
     {
+        icon: Building2,
+        title: 'Real Estate',
+        description: 'Facilitating property acquisitions, disposals, development financing, real estate investments, and strategic property partnerships.',
+        image: '/carousel3.png',
+    },
+    {
         icon: Network,
-        title: 'Infrastructure',
-        description: 'Long-duration capital for the energy, logistics, and digital backbone of African growth.',
+        title: 'Infrastructure & Capital Goods',
+        description: 'Structuring financing and commercial partnerships for infrastructure, industrial equipment, transportation assets, energy projects, and other productive assets.',
         image: '/approach.png',
+    },
+    {
+        icon: Ship,
+        title: 'Commodity Trading',
+        description: 'Facilitating structured transactions in agricultural commodities, minerals, metals, and energy products, connecting verified suppliers with qualified international buyers.',
+        image: '/carousel1.png',
+    },
+    {
+        icon: Handshake,
+        title: 'Strategic Investments & Partnerships',
+        description: 'Originating opportunities, structuring transactions, and bringing together the right financial and commercial partners to execute complex business projects.',
+        image: '/carousel2.png',
     },
 ];
 
 const reasons = [
     {
         title: 'Structural Tailwinds',
-        description: 'We invest behind demographics, urbanisation, and integration trends that compound over decades — not quarters.',
+        description: 'We focus on demographics, urbanisation, and integration trends that compound over decades — not quarters.',
     },
     {
-        title: 'Downside Discipline',
-        description: 'Capital preservation comes first. Every position is structured for resilience before it is structured for upside.',
+        title: 'Verify First, Commit Second',
+        description: 'Every party and proposition is verified before commitments are made. Transactions are structured for resilience before they are structured for upside.',
     },
 ];
 
@@ -50,11 +56,11 @@ const WhatWeDoBody = () => {
                         <div className="flex items-center gap-3 mb-5" data-aos="fade-right">
                             <div className="h-px w-12 bg-amber-400" />
                             <span className="text-amber-400 text-sm tracking-[3px] font-medium uppercase">
-                                Core Strategies
+                                Core Business Areas
                             </span>
                         </div>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" data-aos="fade-up">
-                            Four disciplines, one{' '}
+                            Five business areas, one{' '}
                             <span className="font-playfair italic text-amber-400">conviction.</span>
                         </h2>
                     </div>
@@ -65,7 +71,7 @@ const WhatWeDoBody = () => {
                             return (
                                 <div
                                     key={strategy.title}
-                                    className="group relative h-72 rounded-3xl overflow-hidden border border-white/10 hover:-translate-y-2 transition-all duration-500"
+                                    className={`group relative h-72 rounded-3xl overflow-hidden border border-white/10 hover:-translate-y-2 transition-all duration-500 ${strategies.length % 2 === 1 && index === strategies.length - 1 ? 'md:col-span-2' : ''}`}
                                     data-aos="fade-up"
                                     data-aos-delay={(index % 2) * 120}
                                 >
@@ -99,7 +105,7 @@ const WhatWeDoBody = () => {
                             <div className="flex items-center gap-3 mb-5">
                                 <div className="h-px w-12 bg-amber-400" />
                                 <span className="text-amber-400 text-sm tracking-[3px] font-medium uppercase">
-                                    Why Invest
+                                    Why LXXI
                                 </span>
                             </div>
                             <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
@@ -107,8 +113,7 @@ const WhatWeDoBody = () => {
                                 <span className="font-playfair italic text-amber-400">arc of growth.</span>
                             </h2>
                             <p className="text-gray-600 leading-relaxed max-w-md mb-8">
-                                Africa is not a single trade — it is a generational opportunity. We position
-                                capital where fundamentals, not headlines, drive returns.
+                                Africa is not a single trade — it is a generational opportunity. We connect capital with opportunities where fundamentals, not headlines, drive value.
                             </p>
                             <Link
                                 href="/sectors"

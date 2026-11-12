@@ -114,8 +114,7 @@ const Leadership = () => {
         </div>
         <div className="text-center max-w-4xl mx-auto">
           <p className="text-gray-300 text-lg text-center leading-relaxed max-w-4xl">
-            Our leadership team brings together five years of combined experience across investment banking,
-            private equity, development finance, and sovereign capital — united by a shared conviction in the
+            Our leadership team brings together expertise across brokerage, real estate, trade and infrastructure, legal and compliance, operations, and technology — united by a shared conviction in the
             power of African enterprise.
           </p>
         </div>

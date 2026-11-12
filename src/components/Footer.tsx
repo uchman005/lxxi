@@ -11,11 +11,11 @@ const footerLinks = {
     { label: 'News', href: '/news' },
   ],
   Services: [
-    { label: 'Private Equity', href: '/services' },
-    { label: 'Venture Capital', href: '/services' },
-    { label: 'Real Estate', href: '/services' },
-    { label: 'Infrastructure', href: '/services' },
-    { label: 'Private Credit', href: '/services' },
+    { label: 'Private Equity & Private Credit', href: '/what-we-do' },
+    { label: 'Real Estate', href: '/what-we-do' },
+    { label: 'Infrastructure & Capital Goods', href: '/what-we-do' },
+    { label: 'Commodity Trading', href: '/what-we-do' },
+    { label: 'Strategic Investments & Partnerships', href: '/what-we-do' },
   ],
   Legal: [
     { label: 'Privacy Policy', href: '/privacy' },
@@ -45,9 +45,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-gray-400 text-sm leading-loose mb-6 max-w-xs">
-              LXXI Limited is at the intersection of African ambition and global
-              capital — creating transformative investment opportunities across
-              the continent.
+              LXXI Limited connects capital, businesses, investors, and strategic partners with real opportunities across Africa — making African opportunities investable and African businesses financeable.
             </p>
 
             {/* Contact info */}
@@ -126,11 +124,15 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} LXXI Limited. All rights reserved.
           </p>
           <p className="text-gray-600 text-xs max-w-2xl">
-            This material is for qualified investors only and does not constitute investment advice or a solicitation to invest. Capital at risk. Past performance is not indicative of future results. LXXI Capital Management is a registered investment manager. All brokerage, facilitation, and advisory engagements are subject to our{' '}
+            LXXI Limited is a structured brokerage and transaction facilitation company, not a fund manager. Information on this website is for general purposes only and does not constitute investment advice or an offer or solicitation to invest. All brokerage, facilitation, and advisory engagements are subject to our{' '}
             <Link href="/terms-of-engagement" className="text-gray-500 underline hover:text-[#E5B63E] transition-colors">
               Terms of Engagement
             </Link>
-            , including a mandatory engagement fee.
+            , including a mandatory engagement fee, and all trade transactions to our{' '}
+            <Link href="/trade-engagement-protocol" className="text-gray-500 underline hover:text-[#E5B63E] transition-colors">
+              Trade Engagement Protocol
+            </Link>
+            .
           </p>
         </div>
       </div>

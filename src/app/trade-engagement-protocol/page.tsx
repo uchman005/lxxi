@@ -21,6 +21,12 @@ export default function TradeEngagementProtocol() {
       lastUpdated="1 March 2026"
       downloadHref="/documents/LXXI-Trade-Engagement-Due-Diligence-Protocol.pdf"
       downloadLabel="Download PDF"
+      engagementCta={{
+        href: '/terms-of-engagement#engagement-form',
+        label: 'Start Client Engagement Form',
+        description:
+          'Submit your transaction through the Client Engagement Form. Every trade then moves through the gates above: verification first, commitment second.',
+      }}
       intro="This protocol sets out LXXI Limited's verification-before-commitment framework for all prospective and existing trade transactions introduced to LXXI — spanning commodities (energy, agriculture, minerals), capital goods, and other strategic trade opportunities. It is a mandatory trade engagement framework, issued by the Head of Trades, LXXI Limited, effective 1 March 2026."
       sections={[
         {

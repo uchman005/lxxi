@@ -22,8 +22,8 @@ export default function TermsOfEngagement() {
       lastUpdated="5 January 2026"
       downloadHref="/documents/LXXI-Terms-of-Engagement.pdf"
       downloadLabel="Download PDF"
-      extraTocLink={{ id: 'engagement-form', label: 'Start Your Engagement' }}
-      intro="This page outlines LXXI Limited's standard client engagement process, from initial engagement through transaction execution and post-transaction relationship. It applies to all brokerage, facilitation, and advisory services provided by LXXI Limited, except asset/property management, asset acquisition or disposal, and commodity trade services. It is designed to provide clarity, transparency, and confidence to clients, facilitators, partners, and counterparties engaging or referring LXXI's services."
+      engagementCta={{ href: '#engagement-form', label: 'Start Client Engagement Form' }}
+      intro="This page outlines LXXI Limited's standard client engagement process, from initial engagement through transaction execution and post-transaction relationship. It applies to all brokerage, facilitation, and advisory services provided by LXXI Limited, except asset/property management, asset acquisition or disposal, and commodity trade services (commodity trades follow LXXI's Trade Engagement & Due Diligence Protocol). It is designed to provide clarity, transparency, and confidence to clients, facilitators, partners, and counterparties engaging or referring LXXI's services."
       sections={[
         {
           id: 'purpose',
@@ -58,7 +58,7 @@ export default function TermsOfEngagement() {
             'Allocation of deal team and resources',
             'Legal and administrative services',
           ],
-          note: 'No introductions, documentation, negotiations, or counterparty engagements commence until the engagement fee is received.',
+          note: 'No introductions, documentation, negotiations, or counterparty engagements commence until the engagement fee is paid into the designated account.',
         },
         {
           id: 'engagement-journey',
@@ -100,7 +100,7 @@ export default function TermsOfEngagement() {
           list: [
             'Description of services required',
             'Transaction value, objectives, scope, and dynamics',
-            'Acknowledgment of the engagement fee (5% of total service/brokerage fee)',
+            'Acknowledgment of the engagement fee',
             'Acknowledgment of applicable brokerage/service fees',
             'Confidentiality and exclusivity terms (where applicable)',
             'Validity period of the instruction',
@@ -119,26 +119,32 @@ export default function TermsOfEngagement() {
             'Reputational and counterparty risk',
             'Internal capacity and alignment',
           ],
-          note: 'Upon approval, LXXI issues an Engagement Acceptance notice with an attached invoice for the engagement fee. If not approved, an Engagement Rejection is issued instead.',
+          bodyAfter: [
+            'Upon approval, LXXI issues an Engagement Acceptance notice with an attached bank account opening form. The form is to be completed and returned to LXXI with all the requested account opening documents attached. The account is opened in one of LXXI’s affiliated banks — the choice of bank depends on the desired service and location — and its details are to be communicated to LXXI as soon as the account is created.',
+          ],
+          note: 'If the engagement is not approved, an Engagement Rejection notice is issued communicating the reason for the decision.',
         },
         {
           id: 'fee-payment-mandate-activation',
           heading: 'Engagement Fee Payment & Mandate Activation',
           body: [
-            'An engagement fee invoice (5% of the applicable brokerage/service fee) is issued upon acceptance.',
+            'An engagement fee invoice (5% of the applicable brokerage/service fee) is issued upon receipt of the new account details. The engagement fee is paid into this newly opened account, with a lien placed on it.',
           ],
           list: [
             'Payment of the engagement fee formally activates the mandate.',
             'Execution activities commence only after payment confirmation.',
-            'After payment, an official notice of receipt is sent alongside a detailed checklist of documents required from the client for the transaction.',
+            'After payment confirmation, an official notice of receipt is sent alongside a detailed checklist of the documents expected from the client for the transaction, an NDNCA, and a Brokerage Agreement.',
           ],
-          note: 'Upon activation, an NDNCA and an engagement/brokerage agreement are executed, a transaction lead is assigned, and a structured execution plan is communicated. The engagement fee is non-refundable, as it covers the legal, administrative, compliance, and documentation phase of the transaction.',
+          bodyAfter: [
+            'Upon activation, the executed NDNCA and Brokerage Agreement are exchanged, after which a transaction lead is assigned and a structured execution plan is communicated.',
+          ],
+          note: 'The engagement fee in the newly created account remains under lien until after the documentation phase of the transaction.',
         },
         {
           id: 'documentation-and-execution',
           heading: 'Transaction Documentation and Execution',
           body: [
-            'LXXI reviews all documents communicated in the checklist and undertakes execution activities, which may include:',
+            'LXXI receives and reviews all the documents communicated to the client in the checklist, and begins undertaking execution activities, which may include:',
           ],
           list: [
             'Counterparty sourcing and introductions',
@@ -147,7 +153,11 @@ export default function TermsOfEngagement() {
             'Due diligence coordination',
             'Regulatory, compliance, and closing support',
           ],
-          note: 'Clients receive periodic updates and are consulted at all key decision points.',
+          bodyAfter: [
+            'During documentation, clients receive periodic updates and are consulted at all key decision points.',
+            'Once both internal and counterparty documentation is complete, and the counterparty’s risk team has approved the transaction as having passed its risk assessment, LXXI is entitled to draw down the engagement fee deposited in the newly created account using the Irrevocable Payment Order issued by the client.',
+          ],
+          note: 'All requested documents are expected to be submitted in full within 10 business days. Any need for an extension must be communicated by email, and an extension cannot exceed 5 business days. The engagement fee, once drawn, is non-refundable.',
         },
         {
           id: 'deal-closure',
@@ -162,7 +172,7 @@ export default function TermsOfEngagement() {
         },
         {
           id: 'post-transaction',
-          heading: 'Post-Transaction Success & Relationship Continuity',
+          heading: 'Post-Transaction Success',
           body: [
             'LXXI Limited remains engaged for up to 12 months post-closure to ensure transaction success through:',
           ],
@@ -171,7 +181,19 @@ export default function TermsOfEngagement() {
             'Transition or handover support (where applicable)',
             'Post-deal review and optimisation discussions',
           ],
-          note: 'LXXI views every transaction as the foundation for a long-term relationship. Clients may be supported through repeat or portfolio-wide mandates, strategic advisory and asset management services, and ongoing market intelligence and opportunity sourcing.',
+          note: 'In the case of a credit transaction, LXXI remains engaged until the credit is paid up in full.',
+        },
+        {
+          id: 'relationship-continuity',
+          heading: 'Relationship Continuity',
+          body: [
+            'LXXI Limited views every transaction as the foundation for a long-term relationship. Clients may be supported through:',
+          ],
+          list: [
+            'Repeat or portfolio-wide mandates',
+            'Strategic advisory and asset management services',
+            'Ongoing market intelligence and opportunity sourcing',
+          ],
         },
         {
           id: 'fee-structure',

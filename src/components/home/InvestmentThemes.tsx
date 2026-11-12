@@ -6,23 +6,23 @@ const InvestmentThemes = () => {
         {
             category: "INFRASTRUCTURE",
             image: "/charts/1.png",
-            tag: "Real Assets • 2024",
-            title: "East Africa Infrastructure Corridor",
-            description: "A multi-jurisdictional investment targeting transport, energy, and logistics networks across Kenya, Tanzania, and Rwanda — anchored by long-term concession agreements.",
+            tag: "Infrastructure & Capital Goods",
+            title: "East African Trade & Logistics Corridors",
+            description: "Transport, energy, and logistics networks connecting Kenya, Tanzania, and Rwanda — where LXXI structures financing and commercial partnerships for productive assets.",
         },
         {
             category: "AGRI-INDUSTRIAL",
             image: "/charts/2.png",
-            tag: "Real Assets • 2024",
-            title: "West Africa Agri-Industrial Initiative",
-            description: "Scaling productive agricultural land and processing infrastructure across Nigeria, Ghana, and Côte d'Ivoire — capturing compounding value from field to market.",
+            tag: "Commodity Trading",
+            title: "West African Agri-Commodity Value Chains",
+            description: "Cocoa, sesame, grains, and palm products from Nigeria, Ghana, and Côte d'Ivoire — connecting verified suppliers with qualified international buyers.",
         },
         {
             category: "PRIVATE CREDIT",
             image: "/charts/3.png",
-            tag: "Alternative Investments • 2025",
-            title: "Pan-African Private Credit Fund",
-            description: "A dedicated credit vehicle providing structured debt to mid-market African businesses, filling the critical gap left by retreating traditional lenders across the continent.",
+            tag: "Private Equity & Private Credit",
+            title: "Mid-Market Growth Financing",
+            description: "Connecting mid-market African businesses with private credit providers and lenders — filling the gap left by retreating traditional lenders across the continent.",
         },
     ];
 
@@ -33,7 +33,7 @@ const InvestmentThemes = () => {
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
                     <div data-aos="fade-right">
                         <span className="text-amber-400 uppercase tracking-[3px] text-sm font-semibold">
-                            FEATURED
+                            FOCUS
                         </span>
                         <h2 className="text-5xl md:text-6xl font-bold text-white mt-2">
                             Investment <span className="text-amber-400 font-playfair">Themes</span>
@@ -41,11 +41,11 @@ const InvestmentThemes = () => {
                     </div>
 
                     <Link
-                        href="/insights"
+                        href="/sectors"
                         className="group flex items-center gap-3 text-white hover:text-amber-400 transition-colors mt-6 md:mt-0"
                         data-aos="fade-left"
                     >
-                        <span className="text-lg font-medium">VIEW ALL INSIGHTS</span>
+                        <span className="text-lg font-medium">EXPLORE OUR SECTORS</span>
                         <span className="text-2xl group-hover:translate-x-2 transition-transform">→</span>
                     </Link>
                 </div>

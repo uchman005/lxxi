@@ -1,15 +1,15 @@
 const WhatWeDoSection = () => {
     const stats = [
         {
-            number: "5+",
-            label: "Core investment sectors across the continent"
+            number: "5",
+            label: "Core business areas across the continent"
         },
         {
             number: "4",
             label: "African regions under active coverage"
         },
         {
-            number: "7I",
+            number: "71",
             label: "A number representing our founding conviction"
         },
     ];

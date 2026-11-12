@@ -9,13 +9,13 @@ const timelineData = [
         year: "2023",
         title: "Global Capital Partnerships",
         description:
-            "We built trusted relationships with international investors who believe in Africa’s future. Through these partnerships, we brought funding into key sectors like infrastructure, agriculture, and technology- helping African businesses expand and create opportunities. AUM surpassed $500M for the first time.",
+            "We built trusted relationships with international investors who believe in Africa’s future. Through these partnerships, we brought funding into key sectors like infrastructure, agriculture, and technology- helping African businesses expand and create opportunities.",
     },
     {
-        year: "2025",
-        title: "LXXI Innovation Fund Launch",
+        year: "2026",
+        title: "Formalised Engagement Framework",
         description:
-            "In response to Africa’s accelerating digital and economic transformation, we launched a dedicated innovation fund. The fund focuses on high-growth businesses across sectors such as fintech and agricultural real needs while delivering sustainable returns.",
+            "We introduced our Terms of Engagement and Trade Engagement & Due Diligence Protocol — a verification-first framework that brings clarity, transparency, and discipline to every brokerage, facilitation, and trade transaction.",
     },
 ];
 
@@ -32,14 +32,11 @@ export default function TimelineSection() {
 
                     <h2 className="text-3xl md:text-5xl font-light leading-tight mb-6">
                         A legacy built <br />
-                        across <span className="text-yellow-400 italic">generations</span>
+                        on <span className="text-yellow-400 italic">conviction</span>
                     </h2>
 
                     <p className="text-gray-400 mb-6 leading-relaxed">
-                        <span className="text-white font-medium">LXXI LIMITED</span> is an
-                        African-focused alternative investment and real assets platform,
-                        purpose-built to structure, execute, and scale complex opportunities
-                        across frontier and emerging African markets.
+                        <span className="text-white font-medium">LXXI LIMITED</span> is an African-focused investment, structured brokerage, and strategic transaction facilitation company headquartered in Abuja — purpose-built to originate, structure, and execute complex opportunities across Africa’s frontier and emerging markets.
                     </p>
 
                     <p className="text-gray-400 mb-6 leading-relaxed">
@@ -57,7 +54,7 @@ export default function TimelineSection() {
 
                     <div className="mt-10">
                         <h3 className="text-yellow-400 text-lg tracking-wide">
-                            5 YEARS OF MILESTONE
+                            5 YEARS OF MILESTONES
                         </h3>
                         <p className="text-gray-500 text-sm mt-2">
                             Scroll to explore our journey through Africa’s transformative years

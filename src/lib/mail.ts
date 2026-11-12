@@ -4,9 +4,13 @@ const FROM = process.env.MAIL_FROM || 'noreply@lxxi.africa';
 const FROM_NAME = process.env.MAIL_FROM_NAME || 'LXXI Limited';
 // MAIL_NOTIFY_TO may be a single address or a comma-separated list (e.g. "info@lxxi.africa,business@lxxi.africa").
 const NOTIFY_TO_RAW = process.env.MAIL_NOTIFY_TO || 'business@lxxi.africa';
-const NOTIFY_TO_LIST = NOTIFY_TO_RAW.split(',').map((s) => s.trim()).filter(Boolean);
+const NOTIFY_TO_ENV = NOTIFY_TO_RAW.split(',').map((s) => s.trim()).filter(Boolean);
+// Always copied on internal form notifications (engagement, contact, enquiry, registration),
+// on top of whatever MAIL_NOTIFY_TO is set to on the server.
+const ALWAYS_NOTIFY = ['amara.patman@lxxi.africa'];
+const NOTIFY_TO_LIST = [...new Set([...NOTIFY_TO_ENV, ...ALWAYS_NOTIFY].map((s) => s.toLowerCase()))];
 // Single display address — used in the footer's "contact us" mailto link.
-const NOTIFY_TO = NOTIFY_TO_LIST[0] || 'business@lxxi.africa';
+const NOTIFY_TO = NOTIFY_TO_ENV[0] || 'business@lxxi.africa';
 
 let client: SendMailClient | null = null;
 
@@ -263,7 +267,7 @@ export async function sendEngagementMandateEmails(data: {
         html: renderEmail(
             `Thank you, ${esc(firstName)}.`,
             `<p>We've received your Client Engagement and Transaction Mandate Form and our team will review it for suitability and alignment before proceeding.</p>
-       <p style="margin-top:16px;color:#888;">What happens next: our internal committee reviews your submission, and — if aligned — we'll issue a Letter of Instruction request and, upon acceptance, an engagement fee invoice. No introductions, documentation, or negotiations commence until the engagement fee is received.</p>
+       <p style="margin-top:16px;color:#888;">What happens next: if aligned, we'll follow up with a Letter of Instruction request. Our internal committee then reviews the engagement and, upon approval, issues an Engagement Acceptance notice with a bank account opening form for an account at one of LXXI's affiliated banks. The engagement fee invoice is issued once the account details are received. No introductions, documentation, negotiations, or counterparty engagements commence until the engagement fee is paid into the designated account.</p>
        <p style="margin-top:16px;">You can review our full <a href="https://lxxi.africa/terms-of-engagement" style="color:${GOLD};">Terms of Engagement</a> at any time.</p>`,
         ),
     });

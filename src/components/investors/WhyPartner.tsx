@@ -13,8 +13,8 @@ const reasons = [
     },
     {
         icon: LineChart,
-        title: 'Aligned Returns',
-        description: 'We co-invest and structure incentives so our interests sit alongside yours.',
+        title: 'Aligned Incentives',
+        description: 'Our success-based fee model means we are rewarded when your transaction closes, so our interests sit alongside yours.',
     },
     {
         icon: Lock,
@@ -34,7 +34,7 @@ const investorTypes = [
     },
     {
         title: 'High-Net-Worth Individuals',
-        description: 'Qualified investors pursuing curated co-investment and structured opportunities.',
+        description: 'Qualified investors pursuing curated private-market and structured opportunities.',
     },
     {
         title: 'DFIs & Development Capital',
@@ -43,10 +43,10 @@ const investorTypes = [
 ];
 
 const stats = [
-    { value: '$2B+', label: 'Sector Exposure' },
-    { value: '15+', label: 'African Markets' },
-    { value: '85+', label: 'Structured Deals' },
-    { value: 'A+', label: 'Institutional Rigor' },
+    { value: '5', label: 'Core Business Areas' },
+    { value: '4', label: 'African Regions' },
+    { value: '10', label: 'Trade Verification Gates' },
+    { value: '12 mo', label: 'Post-Closure Support' },
 ];
 
 const WhyPartner = () => {

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'Partner with LXXI to access institutional-grade African opportunities. Discover our governance, investor types, and how to begin a confidential conversation.',
   keywords:
-    'LXXI investors, institutional investors, family offices, co-investment, African private markets, DFI, qualified investors',
+    'LXXI investors, institutional investors, family offices, African private markets, structured brokerage, DFI, qualified investors',
   openGraph: {
     title: 'For Investors — LXXI Limited',
     description: 'A bridge between global capital and African growth. Partner with LXXI.',

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
-import { ShieldAlert, Download, ArrowDown } from 'lucide-react';
+import Link from 'next/link';
+import { ShieldAlert, Download, ArrowDown, ArrowRight, FileSignature } from 'lucide-react';
 
 export type LegalTable = {
     headers: string[];
@@ -18,6 +19,8 @@ export type LegalSection = {
     body?: string[];
     list?: string[];
     orderedList?: string[];
+    /** Paragraphs rendered after the lists/subsections and before the note. */
+    bodyAfter?: string[];
     note?: string;
     table?: LegalTable;
     /** Grouped labeled sub-lists within one section, e.g. "Corporate" / "Authority" / "Product". */
@@ -35,8 +38,12 @@ type LegalLayoutProps = {
     downloadHref?: string;
     downloadLabel?: string;
     hideDraftNotice?: boolean;
-    /** Rendered as an extra, highlighted entry in the "On this page" TOC, linking to an anchor in `children`. */
-    extraTocLink?: { id: string; label: string };
+    /**
+     * Call to action pointing at the Client Engagement Form. Shown in the page header, under the
+     * "On this page" TOC, and (when it links to another page) as a closing card after the sections.
+     * Use "#engagement-form" when the form is rendered on the same page via `children`.
+     */
+    engagementCta?: { href: string; label: string; description?: string };
     /** Rendered after the numbered sections, still inside the page's <main>. */
     children?: ReactNode;
 };
@@ -50,9 +57,12 @@ const LegalLayout = ({
     downloadHref,
     downloadLabel = 'Download PDF',
     hideDraftNotice = true,
-    extraTocLink,
+    engagementCta,
     children,
 }: LegalLayoutProps) => {
+    const ctaIsSamePage = engagementCta?.href.startsWith('#') ?? false;
+    const CtaArrow = ctaIsSamePage ? ArrowDown : ArrowRight;
+
     return (
         <main className="bg-white text-black">
             {/* Header */}
@@ -81,11 +91,26 @@ const LegalLayout = ({
                     >
                         <p className="text-gray-400 text-sm">Last updated: {lastUpdated}</p>
 
+                        {engagementCta && (
+                            <CtaLink
+                                href={engagementCta.href}
+                                className="group inline-flex items-center gap-2 bg-amber-400 text-black text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-amber-300 transition-colors"
+                            >
+                                <FileSignature className="w-4 h-4" />
+                                {engagementCta.label}
+                                <CtaArrow className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                            </CtaLink>
+                        )}
+
                         {downloadHref && (
                             <a
                                 href={downloadHref}
                                 download
-                                className="inline-flex items-center gap-2 bg-amber-400 text-black text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-amber-300 transition-colors"
+                                className={
+                                    engagementCta
+                                        ? 'inline-flex items-center gap-2 border border-white/20 text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:border-amber-400 hover:text-amber-400 transition-colors'
+                                        : 'inline-flex items-center gap-2 bg-amber-400 text-black text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-amber-300 transition-colors'
+                                }
                             >
                                 <Download className="w-4 h-4" />
                                 {downloadLabel}
@@ -122,14 +147,14 @@ const LegalLayout = ({
                                 </ul>
                             </nav>
 
-                            {extraTocLink && (
-                                <a
-                                    href={`#${extraTocLink.id}`}
+                            {engagementCta && (
+                                <CtaLink
+                                    href={engagementCta.href}
                                     className="mt-6 flex items-center justify-between gap-3 bg-black text-white rounded-xl px-4 py-3.5 hover:bg-amber-400 hover:text-black transition-colors group"
                                 >
-                                    <span className="text-sm font-semibold">{extraTocLink.label}</span>
-                                    <ArrowDown className="w-4 h-4 shrink-0 group-hover:translate-y-0.5 transition-transform" />
-                                </a>
+                                    <span className="text-sm font-semibold">{engagementCta.label}</span>
+                                    <CtaArrow className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+                                </CtaLink>
                             )}
 
                             {/* Draft notice */}
@@ -228,6 +253,12 @@ const LegalLayout = ({
                                             </div>
                                         )}
 
+                                        {section.bodyAfter?.map((paragraph, i) => (
+                                            <p key={i} className="text-gray-700 leading-relaxed font-medium">
+                                                {paragraph}
+                                            </p>
+                                        ))}
+
                                         {section.note && (
                                             <div className="flex gap-3 bg-amber-400/10 border border-amber-400/30 rounded-xl p-4">
                                                 <ShieldAlert className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
@@ -275,6 +306,33 @@ const LegalLayout = ({
                             ))}
                         </div>
 
+                        {engagementCta && !ctaIsSamePage && (
+                            <div
+                                className="mt-16 relative overflow-hidden bg-[#0A0A0A] text-white rounded-3xl p-8 md:p-10"
+                                data-aos="fade-up"
+                            >
+                                <div className="absolute -top-24 -right-24 w-72 h-72 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+                                <div className="relative flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                                    <div className="max-w-xl">
+                                        <h2 className="text-2xl font-bold mb-2">
+                                            Ready to <span className="font-playfair italic text-amber-400">engage</span> LXXI?
+                                        </h2>
+                                        {engagementCta.description && (
+                                            <p className="text-gray-400 leading-relaxed">{engagementCta.description}</p>
+                                        )}
+                                    </div>
+                                    <CtaLink
+                                        href={engagementCta.href}
+                                        className="group inline-flex items-center justify-center gap-2 bg-amber-400 text-black text-sm font-semibold px-6 py-3 rounded-full hover:bg-amber-300 transition-colors shrink-0"
+                                    >
+                                        <FileSignature className="w-4 h-4" />
+                                        {engagementCta.label}
+                                        <CtaArrow className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                                    </CtaLink>
+                                </div>
+                            </div>
+                        )}
+
                         <div className="mt-16 pt-8 border-t border-black/10">
                             <p className="text-sm text-gray-500">
                                 Questions about this policy? Contact us at{' '}
@@ -295,5 +353,21 @@ const LegalLayout = ({
         </main>
     );
 };
+
+/** Same-page anchors use a plain <a> so the browser scrolls natively; other routes use next/link. */
+function CtaLink({ href, className, children }: { href: string; className: string; children: ReactNode }) {
+    if (href.startsWith('#')) {
+        return (
+            <a href={href} className={className}>
+                {children}
+            </a>
+        );
+    }
+    return (
+        <Link href={href} className={className}>
+            {children}
+        </Link>
+    );
+}
 
 export default LegalLayout;

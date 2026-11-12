@@ -5,7 +5,7 @@ import ContactSection from '@/components/contact/ContactSection';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Get in touch with LXXI Limited. Reach our team at business@lxxi.africa or through our offices across Africa for investment, partnership, and press enquiries.',
+    'Get in touch with LXXI Limited — headquartered in Abuja, with presence across Africa. Reach our team at business@lxxi.africa for investment, partnership, and press enquiries.',
   keywords:
     'LXXI contact, contact LXXI, investment enquiries, African investment firm contact, business@lxxi.africa',
   openGraph: {

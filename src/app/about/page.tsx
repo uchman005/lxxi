@@ -10,13 +10,13 @@ import BoardAndTestimonials from '@/components/about/BoardAndTestimonials';
 export const metadata: Metadata = {
   title: 'LXXI Limited — Defined by Purpose. Driven by Africa.',
   description:
-    'For over 5 years, LXXI LIMITED has been at the intersection of African ambition and global capital. Explore our investment strategy, leadership, and vision.',
+    'For over 5 years, LXXI Limited has connected capital, businesses, investors, and strategic partners with real opportunities across Africa. Meet our leadership and board, and explore our story and principles.',
   keywords:
-    'LXXI, lxxi, lxxi limited, African investments, venture capital, private equity, emerging markets, Africa capital',
+    'LXXI, LXXI Limited, about LXXI, African investment, structured brokerage, transaction facilitation, private equity, private credit, real estate, commodity trading, Abuja, Nigeria',
   openGraph: {
     title: 'LXXI Limited — Defined by Purpose. Driven by Africa.',
     description:
-      'Pioneering alternative investments across Africa\'s most dynamic markets.',
+      'Making African opportunities investable, African businesses financeable, and African assets commercially productive.',
     images: ['/logo.png'],
   },
 };

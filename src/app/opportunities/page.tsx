@@ -6,12 +6,12 @@ import InstitutionalInquiry from '@/components/sectors/InstitutionalInquiry';
 export const metadata: Metadata = {
   title: 'Investment Opportunities',
   description:
-    'Explore live, qualified-investor opportunities sourced and structured by LXXI across real estate, infrastructure, commodities, and private equity in African markets.',
+    'How LXXI sources, verifies, and shares opportunities across real estate, commodity trading, infrastructure and capital goods, and private equity and private credit in Africa — with mandates shared privately after engagement.',
   keywords:
-    'LXXI opportunities, investment opportunities, co-investment, deal flow, African real assets, private equity, infrastructure',
+    'LXXI opportunities, investment opportunities, deal origination, African real assets, private equity, private credit, infrastructure, commodity trading',
   openGraph: {
     title: 'Investment Opportunities — LXXI Limited',
-    description: 'Selectively sourced, rigorously structured opportunities for qualified investors.',
+    description: 'Selectively sourced, rigorously structured opportunities — shared privately with qualified clients after engagement.',
     images: ['/logo.png'],
   },
 };
@@ -20,21 +20,21 @@ export default function Opportunities() {
   return (
     <main>
       <PageHero
-        eyebrow="Live Opportunities"
+        eyebrow="Opportunities"
         title="Where capital meets"
         accent="opportunity."
-        subtitle="A curated pipeline of structured opportunities across Africa's most resilient sectors. Access is reserved for qualified investors."
+        subtitle="Opportunities across Africa's most resilient sectors, shared privately with qualified clients and counterparties after engagement and verification."
         bgImage="/carousel3.png"
         primaryCta={{ label: 'Request Access', href: '#inquiry' }}
-        secondaryCta={{ label: 'View Sectors', href: '/sectors' }}
+        secondaryCta={{ label: 'Client Engagement Form', href: '/terms-of-engagement#engagement-form' }}
       />
 
-      {/* Qualified investor disclaimer */}
+      {/* Disclaimer */}
       <div className="bg-black border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-4">
           <p className="text-xs text-gray-500 text-center leading-relaxed">
-            For qualified and professional investors only. The information shown is illustrative and does not
-            constitute an offer or solicitation to invest. Capital at risk.
+            Opportunity details are shared only with qualified clients and counterparties after engagement and
+            verification. Nothing on this page constitutes an offer or solicitation to invest.
           </p>
         </div>
       </div>

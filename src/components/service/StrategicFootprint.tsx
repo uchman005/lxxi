@@ -2,41 +2,41 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 const stats = [
-    { value: "$1.4B+", label: "ASSETS UNDER ADVICE" },
-    { value: "12", label: "AFRICAN MARKETS" },
-    { value: "85+", label: "STRUCTURED DEALS" },
-    { value: "100%", label: "REGULATORY COMPLIANCE" },
+    { value: "5", label: "CORE BUSINESS AREAS" },
+    { value: "4", label: "AFRICAN REGIONS" },
+    { value: "10", label: "TRADE VERIFICATION GATES" },
+    { value: "12 MO", label: "POST-CLOSURE SUPPORT" },
 ];
 
 const approachSteps = [
     {
         number: "01",
-        title: "Identify",
-        description: "Rigorous sourcing of off-market opportunities through local intelligence.",
+        title: "Origination",
+        description: "Identifying viable business and investment opportunities through deep local intelligence and trusted networks.",
         link: "#",
     },
     {
         number: "02",
-        title: "Assess",
-        description: "Deep-dive due diligence and multi-layered risk mitigation strategies.",
+        title: "Structuring",
+        description: "Developing commercially viable transaction structures that balance the interests of every party.",
         link: "#",
     },
     {
         number: "03",
-        title: "Invest",
-        description: "Strategic capital deployment and structured transaction structuring for stability.",
+        title: "Capital Mobilisation",
+        description: "Connecting opportunities with appropriate investors, lenders, and financing institutions.",
         link: "#",
     },
     {
         number: "04",
-        title: "Grow",
-        description: "Active asset management and strategic value creation in the ground.",
+        title: "Execution",
+        description: "Coordinating the parties, documentation, due diligence, and transaction closing.",
         link: "#",
     },
     {
         number: "05",
-        title: "Realize",
-        description: "Exit-oriented strategies designed to maximise shareholder returns.",
+        title: "Post-Transaction Support",
+        description: "Supporting monitoring, reporting, and asset oversight where contracted.",
         link: "#",
     },
 ];
@@ -77,7 +77,7 @@ const StrategicFootprint = () => {
                         <span className="text-sm font-semibold tracking-wider">STRATEGIC PRESENCE</span>
                     </div>
                     <p className="text-xl md:text-2xl font-medium leading-relaxed">
-                        Operating across major hubs including Lagos, Nairobi, Johannesburg, and Casablanca.
+                        Headquartered in Abuja, with presence across major hubs including Lagos, Nairobi, Johannesburg, and Casablanca.
                         Our regional presence enables us to navigate complex local regulatory environments with institutional precision.
                     </p>
                 </div>

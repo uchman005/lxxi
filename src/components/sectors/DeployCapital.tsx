@@ -17,17 +17,17 @@ const sectors = [
         gold: true,
     },
     {
-        title: "General Goods & Infrastructure",
+        title: "Infrastructure & Capital Goods",
         icon: Network,
         image: "/approach.png",
-        description: "Supporting the systems, logistics and trade networks that power modern economies and enable regional connectivity.",
+        description: "Structuring financing and commercial partnerships for infrastructure, industrial equipment, transportation assets and energy projects that power regional connectivity.",
         gold: false,
     },
     {
-        title: "Private Equity & Venture Catalysis",
+        title: "Private Equity & Private Credit",
         icon: TrendingUp,
         image: "/carousel3.png",
-        description: "Backing complex businesses and ambitious founders shaping the next growth cycle with conviction and discipline.",
+        description: "Connecting ambitious businesses and founders with institutional investors, private capital providers and lenders for the next growth cycle.",
         gold: true,
     },
 ];
@@ -49,7 +49,7 @@ const DeployCapital = () => {
                         data-aos="fade-up"
                         data-aos-delay="100"
                     >
-                        Where we deploy capital &{" "}
+                        Where we structure capital &{" "}
                         <span className="font-playfair italic text-amber-400">create impact.</span>
                     </h2>
                     <p
@@ -57,8 +57,7 @@ const DeployCapital = () => {
                         data-aos="fade-up"
                         data-aos-delay="200"
                     >
-                        We deploy capital and structure partnerships in sectors positioned for
-                        resilient, long-term growth.
+                        We structure transactions and partnerships in sectors positioned for resilient, long-term growth.
                     </p>
                 </div>
 

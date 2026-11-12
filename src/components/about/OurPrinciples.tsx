@@ -11,7 +11,7 @@ const principles = [
         number: "02",
         title: "Innovation",
         icon: Lightbulb,
-        description: "We invest in forward-thinking ideas that solve real challenges across Africa. By backing scalable businesses and emerging sectors, we position capital where growth is both meaningful and enduring.",
+        description: "We champion forward-thinking ideas that solve real challenges across Africa. By connecting scalable businesses and emerging sectors with the right capital and partners, we help growth become both meaningful and enduring.",
     },
     {
         number: "03",
@@ -23,7 +23,7 @@ const principles = [
         number: "04",
         title: "Impact",
         icon: Target,
-        description: "We measure success by the strength of the businesses we build and the economies we strengthen. Our investments are designed to deliver sustainable returns while contributing to long-term development across Africa.",
+        description: "We measure success by the transactions that close, the businesses that grow, and the economies they strengthen. Every engagement is structured to deliver sustainable value while contributing to long-term development across Africa.",
     },
 ];
 
@@ -95,7 +95,7 @@ const OurPrinciples = () => {
                     data-aos="fade-up"
                     data-aos-delay="600"
                 >
-                    These are not aspirational statements. They are the operating standards by which LXXI has been run for.
+                    These are not aspirational statements. They are the operating standards by which LXXI has been run since day one.
                 </div>
             </div>
         </section>

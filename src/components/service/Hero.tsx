@@ -5,13 +5,13 @@ function ServiceCards() {
         {
             icon: Globe,
             title: "Our Services",
-            description: "End-to-end Investment solutions built for Africa",
+            description: "End-to-end transaction solutions built for Africa",
             color: "amber",
         },
         {
             icon: TrendingUp,
             title: "Our Sectors",
-            description: "Where we invest to drive growth and impact.",
+            description: "Where we work to drive growth and impact.",
             color: "emerald",
         },
         {

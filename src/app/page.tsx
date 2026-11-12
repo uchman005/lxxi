@@ -12,13 +12,13 @@ import InvestmentTeamCTA from '@/components/home/InvestmentCta';
 export const metadata: Metadata = {
   title: 'LXXI Limited',
   description:
-    'For over 5 years, LXXI LIMITED has been at the intersection of African ambition and global capital. Explore our investment strategy, leadership, and vision.',
+    'LXXI Limited is an African-focused investment, structured brokerage and strategic transaction facilitation company headquartered in Abuja, Nigeria, connecting capital, businesses, investors and strategic partners with real opportunities across Africa.',
   keywords:
-    'LXXI, African investments, venture capital, private equity, emerging markets, Africa capital',
+    'LXXI, LXXI Limited, African investment, structured brokerage, transaction facilitation, private equity, private credit, real estate, infrastructure, capital goods, commodity trading, strategic partnerships, Abuja, Nigeria, Africa',
   openGraph: {
     title: 'LXXI Limited — Defined by Purpose. Driven by Africa.',
     description:
-      'Pioneering alternative investments across Africa\'s most dynamic markets.',
+      'Making African opportunities investable, African businesses financeable and African assets commercially productive by connecting capital, expertise and strategic partnerships.',
     images: ['/logo.png'],
   },
 };

@@ -6,7 +6,7 @@ import InvestmentTeamCTA from '@/components/home/InvestmentCta';
 export const metadata: Metadata = {
   title: 'What We Do',
   description:
-    'LXXI invests across private equity, real estate, private credit, and infrastructure — disciplined strategies built for the long arc of African growth.',
+    'LXXI originates, structures, and facilitates transactions across private equity and private credit, real estate, infrastructure and capital goods, commodity trading, and strategic partnerships in Africa.',
   keywords:
     'LXXI strategies, private equity, real estate, private credit, infrastructure, African investment strategy',
   openGraph: {

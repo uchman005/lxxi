@@ -7,7 +7,7 @@ import InvestmentTeamCTA from '@/components/home/InvestmentCta';
 export const metadata: Metadata = {
   title: 'Our Approach',
   description:
-    'How LXXI creates long-term value: a disciplined, five-stage investment process anchored by discipline, alignment, and measurable outcomes across African markets.',
+    'How LXXI creates long-term value: a disciplined, five-stage transaction process — origination, structuring, capital mobilisation, execution, and post-transaction support — anchored by discipline, alignment, and measurable outcomes.',
   keywords:
     'LXXI approach, investment process, due diligence, value creation, risk management, African private markets',
   openGraph: {

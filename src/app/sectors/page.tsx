@@ -7,7 +7,7 @@ import InstitutionalInquiry from '@/components/sectors/InstitutionalInquiry';
 export const metadata: Metadata = {
   title: 'Investment Sectors — LXXI Limited',
   description:
-    'Explore the core sectors where LXXI deploys capital across Africa — Real Estate, Commodity Trading, General Goods & Infrastructure, and Private Equity & Venture Catalysis.',
+    'Explore the core sectors where LXXI structures and facilitates transactions across Africa — Real Estate, Commodity Trading, Infrastructure & Capital Goods, and Private Equity & Private Credit.',
   keywords:
     'LXXI sectors, African real estate, commodity trading, infrastructure, private equity, venture catalysis, emerging markets',
   openGraph: {

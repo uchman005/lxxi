@@ -1,28 +1,28 @@
 const steps = [
     {
         number: '01',
-        title: 'Identify',
-        description: 'Rigorous sourcing of off-market opportunities through deep local intelligence and proprietary networks.',
+        title: 'Origination',
+        description: 'Identifying viable business and investment opportunities through deep local intelligence and trusted networks.',
     },
     {
         number: '02',
-        title: 'Assess',
-        description: 'Multi-layered due diligence and institutional risk modelling across legal, financial, and operational dimensions.',
+        title: 'Structuring',
+        description: 'Developing commercially viable transaction structures that balance the interests of every party.',
     },
     {
         number: '03',
-        title: 'Invest',
-        description: 'Disciplined capital deployment and bespoke transaction structuring engineered for downside protection.',
+        title: 'Capital Mobilisation',
+        description: 'Connecting opportunities with appropriate investors, lenders, and financing institutions.',
     },
     {
         number: '04',
-        title: 'Grow',
-        description: 'Active asset management and hands-on value creation, aligning operators with long-term shareholder interests.',
+        title: 'Execution',
+        description: 'Coordinating the parties, documentation, due diligence, and transaction closing.',
     },
     {
         number: '05',
-        title: 'Realize',
-        description: 'Exit-oriented strategies designed to crystallise value and maximise risk-adjusted returns at the right moment.',
+        title: 'Post-Transaction Support',
+        description: 'Supporting monitoring, reporting, and asset oversight where contracted.',
     },
 ];
 

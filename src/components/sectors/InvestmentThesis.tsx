@@ -7,7 +7,7 @@ const thesisPoints = [
     {
         number: "02",
         title: "Regional Connectivity",
-        description: "Prioritising assets that reduce cross-border value chains and logistics efficiency.",
+        description: "Prioritising assets that strengthen cross-border value chains and logistics efficiency.",
     },
     {
         number: "03",
@@ -17,9 +17,9 @@ const thesisPoints = [
 ];
 
 const stats = [
-    { value: "$2B+", label: "Sector Exposure" },
-    { value: "15+", label: "African Markets" },
-    { value: "A+", label: "Institutional Rigor" },
+    { value: "4", label: "Core Sectors" },
+    { value: "4", label: "African Regions" },
+    { value: "10", label: "Trade Verification Gates" },
 ];
 
 const InvestmentThesis = () => {

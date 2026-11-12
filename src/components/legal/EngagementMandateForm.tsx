@@ -336,8 +336,9 @@ const EngagementMandateForm = () => {
                             <p className="text-gray-500 max-w-md leading-relaxed">
                                 Thank you, {form.fullName.split(' ')[0] || 'there'}. Your Client Engagement Form has
                                 been submitted for internal review. If aligned, we&apos;ll follow up with a Letter of
-                                Instruction request and, upon acceptance, an engagement fee invoice — in line with
-                                our{' '}
+                                Instruction request. Upon approval, you&apos;ll receive an Engagement Acceptance notice
+                                with a bank account opening form, followed by the engagement fee invoice — in line
+                                with our{' '}
                                 <a href="#purpose" className="text-amber-500 font-medium hover:text-amber-600">
                                     Terms of Engagement
                                 </a>

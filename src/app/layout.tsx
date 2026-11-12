@@ -6,6 +6,8 @@ import AOSInitializer from '@/components/AOSInitializer';
 import Providers from '@/components/Providers';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
+import OrganizationJsonLd from '@/components/OrganizationJsonLd';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -29,22 +31,24 @@ export const metadata: Metadata = {
     template: '%s — LXXI Limited',
   },
   description:
-    'LXXI Limited has been at the intersection of African ambition and global capital for over 5 years. Explore our investment strategy, leadership, and vision for Africa.',
+    'LXXI Limited is an African-focused investment, structured brokerage and strategic transaction facilitation company headquartered in Abuja, Nigeria, connecting capital, businesses, investors and strategic partners with real opportunities across Africa.',
   keywords:
-    'LXXI, alternative investments, venture capital, private equity, Africa investment, emerging markets, African capital, strategic partnerships',
+    'LXXI, LXXI Limited, African investment, structured brokerage, transaction facilitation, private equity, private credit, real estate, infrastructure, capital goods, commodity trading, strategic partnerships, Abuja, Nigeria, Africa',
   openGraph: {
     type: 'website',
     siteName: 'LXXI Limited',
     locale: 'en_US',
     url: 'https://lxxi.africa',
     title: 'LXXI Limited — Defined by Purpose. Driven by Africa.',
-    description: "Pioneering alternative investments across Africa's most dynamic markets.",
+    description:
+      'Making African opportunities investable, African businesses financeable and African assets commercially productive by connecting capital, expertise and strategic partnerships.',
     images: ['/logo.png'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'LXXI Limited — Defined by Purpose. Driven by Africa.',
-    description: "Pioneering alternative investments across Africa's most dynamic markets.",
+    description:
+      'Making African opportunities investable, African businesses financeable and African assets commercially productive by connecting capital, expertise and strategic partnerships.',
     images: ['/logo.png'],
   },
 };
@@ -57,11 +61,13 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} ${playfair.variable}`}>
       <body className='flex flex-col justify-between min-h-full'>
+        <OrganizationJsonLd />
         <Providers>
           <AOSInitializer />
           <Navbar />
           {children}
           <Footer />
+          <WhatsAppButton />
           <Toaster richColors theme="dark" position="top-center" />
         </Providers>
       </body>

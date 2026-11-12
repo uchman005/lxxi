@@ -9,12 +9,12 @@ const pillars = [
     {
         icon: Handshake,
         title: 'Alignment',
-        description: 'We co-invest alongside our partners and structure incentives so that our success is inseparable from the success of those we back.',
+        description: 'Our success-based fee model makes our success inseparable from the success of our clients and partners — we are rewarded when transactions close.',
     },
     {
         icon: Target,
         title: 'Outcomes',
-        description: 'We measure ourselves on realised, risk-adjusted returns and tangible impact on the ground — not on assets under management alone.',
+        description: 'We measure transaction quality by execution integrity and tangible impact on the ground — not by the number of agreements signed.',
     },
 ];
 

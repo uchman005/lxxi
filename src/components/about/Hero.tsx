@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, TrendingUp, Users, Award } from 'lucide-react';
+import { ArrowRight, Briefcase, Globe, Award } from 'lucide-react';
 
 const stats = [
-  { value: '$4.2B', label: 'Assets Under Management', icon: TrendingUp },
-  { value: '15', label: 'Partnerships Established', icon: Users },
+  { value: '5', label: 'Core Business Areas', icon: Briefcase },
+  { value: '4', label: 'African Regions Covered', icon: Globe },
   { value: '5yrs', label: 'Legacy of Excellence', icon: Award },
 ];
 
@@ -66,10 +66,7 @@ export default function Hero() {
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            For over 5 years, LXXI LIMITED has been at the intersection of African
-            ambition and global capital - building enduring wealth through disciplined
-            strategy, deep-rooted relationships, and an unwavering belief in the
-            continent’s potential.
+            For over 5 years, LXXI Limited has connected capital, businesses, investors, and strategic partners with real opportunities across Africa — through disciplined structuring, deep-rooted relationships, and an unwavering belief in the continent’s potential.
           </p>
 
           {/* CTA */}
@@ -79,10 +76,10 @@ export default function Hero() {
             data-aos-delay="300"
           >
             <Link
-              href="/about"
+              href="/contact"
               className="btn-gold inline-flex items-center justify-center gap-2 px-8 py-4 rounded text-sm font-bold tracking-wide"
             >
-              Join Our Community
+              Speak With Us
               <ArrowRight size={16} strokeWidth={2.5} />
             </Link>
             <Link

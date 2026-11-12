@@ -3,7 +3,7 @@ export default function TopMarquee() {
         "East Africa – Infrastructure & Logistics",
         "West Africa – Private Credit & Agri-industrial",
         "Southern Africa – Real Assets & Energy",
-        "North Africa – Real Estate & Strategic Co-investment",
+        "North Africa – Real Estate & Strategic Partnerships",
     ];
 
     return (

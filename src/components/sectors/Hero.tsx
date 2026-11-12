@@ -32,7 +32,7 @@ const SectorsHero = () => {
                             data-aos="fade-up"
                             data-aos-delay="300"
                         >
-                            Investing where<br />
+                            Connecting capital where<br />
                             Africa is building{" "}
                             <span className="font-playfair italic text-amber-400">tomorrow.</span>
                         </h1>
@@ -44,7 +44,7 @@ const SectorsHero = () => {
                             data-aos-delay="500"
                         >
                             We focus on sectors that anchor Africa&apos;s long-term productivity,
-                            unlocking inelastic growth and delivering resilient returns for our investors.
+                            unlocking inelastic growth and resilient value for our clients and partners.
                         </p>
 
                         {/* Buttons */}

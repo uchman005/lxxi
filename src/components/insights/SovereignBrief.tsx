@@ -49,8 +49,8 @@ const SovereignBrief = () => {
                                 <span className="font-playfair italic text-amber-400">Brief</span>
                             </h2>
                             <p className="text-gray-400 leading-relaxed max-w-md">
-                                A concise monthly dispatch of our sharpest thinking on African capital
-                                markets — delivered to institutional inboxes.
+                                Market notes and sector perspectives from LXXI on African transactions —
+                                delivered to your inbox as soon as they&apos;re published.
                             </p>
                         </div>
 

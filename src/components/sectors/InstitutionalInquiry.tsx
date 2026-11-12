@@ -88,7 +88,11 @@ const InstitutionalInquiry = ({ source = 'sectors' }: { source?: string }) => {
                             </p>
 
                             <p className="text-gray-500 text-sm leading-relaxed mb-10 max-w-sm">
-                                Mandates formally begin with a Client Engagement Form and Letter of Instruction,
+                                Mandates formally begin with a{' '}
+                                <Link href="/terms-of-engagement#engagement-form" className="text-amber-500 hover:text-amber-600 underline transition-colors">
+                                    Client Engagement Form
+                                </Link>{' '}
+                                and Letter of Instruction,
                                 and are subject to our engagement fee policy. See our{' '}
                                 <Link href="/terms-of-engagement" className="text-amber-500 hover:text-amber-600 underline transition-colors">
                                     Terms of Engagement
@@ -105,7 +109,7 @@ const InstitutionalInquiry = ({ source = 'sectors' }: { source?: string }) => {
                                         <div className="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-1">
                                             Global Headquarters
                                         </div>
-                                        <div className="text-sm font-medium text-gray-800">Johannesburg, SA</div>
+                                        <div className="text-sm font-medium text-gray-800">Abuja, Nigeria</div>
                                     </div>
                                 </div>
 

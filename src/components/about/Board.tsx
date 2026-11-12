@@ -19,7 +19,7 @@ export default function Board() {
                             BOARD OF DIRECTORS
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold leading-tight text-white">
-                            Our independent Board brings global governance standards to African capital markets.
+                            Our Board provides oversight and governance, holding LXXI to institutional standards in every engagement.
                         </h2>
                     </div>
 

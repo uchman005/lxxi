@@ -1,117 +1,112 @@
-import { MapPin, TrendingUp, Search, FileSearch, Handshake } from 'lucide-react';
+import { MapPin, Lock, Send, ShieldCheck, Handshake } from 'lucide-react';
 
-const opportunities = [
+/** Sector focus areas. Live mandates are never published here — they are shared privately after engagement. */
+const focusAreas = [
     {
-        title: 'Grade-A Logistics Park',
+        title: 'Real Estate',
         sector: 'Real Estate',
-        geography: 'Lagos, Nigeria',
-        target: '18–22% IRR',
-        status: 'Open',
-        statusOpen: true,
-        description: 'Development of a last-mile logistics hub serving West Africa\'s fastest-growing consumer corridor.',
+        geography: 'Across Africa',
+        description:
+            'Property acquisitions, disposals, development financing, and strategic property partnerships in high-demand urban and logistics corridors.',
     },
     {
-        title: 'Structured Commodity Facility',
-        sector: 'Commodity Trading',
-        geography: 'Pan-African',
-        target: '12–15% Yield',
-        status: 'Open',
-        statusOpen: true,
-        description: 'Senior secured facility financing the cross-border flow of agricultural and energy commodities.',
+        title: 'Commodity Trading',
+        sector: 'Commodities',
+        geography: 'Across Africa',
+        description:
+            'Structured transactions in agricultural commodities, minerals, metals, and energy products — verified suppliers matched with qualified international buyers.',
     },
     {
-        title: 'Renewable Energy Platform',
+        title: 'Infrastructure & Capital Goods',
         sector: 'Infrastructure',
-        geography: 'Nairobi, Kenya',
-        target: '16–20% IRR',
-        status: 'Closing Soon',
-        statusOpen: true,
-        description: 'Co-investment into a utility-scale solar and storage platform with contracted offtake.',
+        geography: 'Across Africa',
+        description:
+            'Financing and commercial partnerships for infrastructure, industrial equipment, transportation assets, and energy projects.',
     },
     {
-        title: 'Growth-Stage Venture Fund',
-        sector: 'Private Equity',
-        geography: 'Johannesburg, SA',
-        target: '20%+ IRR',
-        status: 'Allocated',
-        statusOpen: false,
-        description: 'Catalyst capital for category-defining founders across fintech and industrial technology.',
+        title: 'Private Equity & Private Credit',
+        sector: 'Private Markets',
+        geography: 'Across Africa',
+        description:
+            'Businesses seeking investment or financing, connected with institutional investors, private capital providers, and lenders.',
     },
 ];
 
 const steps = [
     {
-        icon: Search,
-        title: 'Express Interest',
-        description: 'Submit a confidential request to access the qualified-investor data room.',
+        icon: Send,
+        title: 'Submit an Enquiry',
+        description:
+            'Tell us what you are looking for through the confidential enquiry form below, or begin formally with our Client Engagement Form.',
     },
     {
-        icon: FileSearch,
-        title: 'Diligence',
-        description: 'Review the structured documentation, terms, and independent diligence findings.',
+        icon: ShieldCheck,
+        title: 'Engagement & Verification',
+        description:
+            'Engagements proceed under our Terms of Engagement and Trade Protocol. Every party is verified before any introduction is made.',
     },
     {
         icon: Handshake,
-        title: 'Commit & Co-Invest',
-        description: 'Finalise allocation and invest alongside LXXI under aligned terms.',
+        title: 'Matching & Execution',
+        description:
+            'Qualified parties are matched to suitable mandates, and LXXI coordinates structuring, documentation, and closing.',
     },
 ];
 
 const OpportunityGrid = () => {
     return (
         <>
-            {/* Opportunities */}
+            {/* Focus areas */}
             <section className="bg-[#0A0A0A] text-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 md:py-28">
                     <div className="mb-12 md:mb-16 max-w-3xl">
                         <div className="flex items-center gap-3 mb-5" data-aos="fade-right">
                             <div className="h-px w-12 bg-amber-400" />
                             <span className="text-amber-400 text-sm tracking-[3px] font-medium uppercase">
-                                Current Mandates
+                                Where We Source
                             </span>
                         </div>
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" data-aos="fade-up">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-5" data-aos="fade-up">
                             Selectively sourced,{' '}
                             <span className="font-playfair italic text-amber-400">rigorously structured.</span>
                         </h2>
+                        <p className="text-gray-400 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+                            Live mandates are shared privately with qualified clients and counterparties once they have
+                            engaged LXXI and completed verification. We do not publish deal terms or return targets.
+                        </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {opportunities.map((opp, index) => (
+                        {focusAreas.map((area, index) => (
                             <div
-                                key={opp.title}
+                                key={area.title}
                                 className="group bg-[#111111] border border-white/10 rounded-3xl p-7 md:p-8 hover:border-amber-400/40 hover:-translate-y-2 transition-all duration-500"
                                 data-aos="fade-up"
                                 data-aos-delay={(index % 2) * 120}
                             >
                                 <div className="flex items-start justify-between gap-4 mb-5">
                                     <span className="bg-amber-400/10 text-amber-400 text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
-                                        {opp.sector}
+                                        {area.sector}
                                     </span>
-                                    <span
-                                        className={`flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full ${opp.statusOpen
-                                            ? 'bg-emerald-400/10 text-emerald-400'
-                                            : 'bg-white/5 text-gray-500'
-                                            }`}
-                                    >
-                                        <span className={`w-1.5 h-1.5 rounded-full ${opp.statusOpen ? 'bg-emerald-400 animate-pulse' : 'bg-gray-500'}`} />
-                                        {opp.status}
+                                    <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full bg-white/5 text-gray-400">
+                                        <Lock className="w-3 h-3" />
+                                        On request
                                     </span>
                                 </div>
 
                                 <h3 className="text-2xl font-semibold mb-3 group-hover:text-amber-400 transition-colors">
-                                    {opp.title}
+                                    {area.title}
                                 </h3>
-                                <p className="text-gray-400 text-sm leading-relaxed mb-6">{opp.description}</p>
+                                <p className="text-gray-400 text-sm leading-relaxed mb-6">{area.description}</p>
 
                                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-5 border-t border-white/5">
                                     <span className="flex items-center gap-2 text-sm text-gray-300">
                                         <MapPin className="w-4 h-4 text-amber-400" />
-                                        {opp.geography}
+                                        {area.geography}
                                     </span>
                                     <span className="flex items-center gap-2 text-sm text-gray-300">
-                                        <TrendingUp className="w-4 h-4 text-amber-400" />
-                                        {opp.target}
+                                        <ShieldCheck className="w-4 h-4 text-amber-400" />
+                                        Shared after verification
                                     </span>
                                 </div>
                             </div>
@@ -131,8 +126,8 @@ const OpportunityGrid = () => {
                             </span>
                         </div>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" data-aos="fade-up">
-                            From interest to{' '}
-                            <span className="font-playfair italic text-amber-400">allocation.</span>
+                            From enquiry to{' '}
+                            <span className="font-playfair italic text-amber-400">execution.</span>
                         </h2>
                     </div>
 

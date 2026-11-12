@@ -1,17 +1,17 @@
 import type { Metadata } from 'next';
 import PageHero from '@/components/shared/PageHero';
-import NewsFeed from '@/components/news/NewsFeed';
+import ComingSoon from '@/components/shared/ComingSoon';
 import InvestmentTeamCTA from '@/components/home/InvestmentCta';
 
 export const metadata: Metadata = {
   title: 'Newsroom',
   description:
-    'The latest news, press releases, and announcements from LXXI Limited — deals, partnerships, and market commentary across African capital markets.',
+    'News and announcements from LXXI Limited, the African-focused investment, structured brokerage, and strategic transaction facilitation company headquartered in Abuja, Nigeria.',
   keywords:
-    'LXXI news, press releases, announcements, African investment news, company updates, market commentary',
+    'LXXI news, LXXI Limited announcements, press, company updates, African investment, structured brokerage',
   openGraph: {
     title: 'Newsroom — LXXI Limited',
-    description: 'News, press releases, and announcements from LXXI Limited.',
+    description: 'News and announcements from LXXI Limited.',
     images: ['/logo.png'],
   },
 };
@@ -23,12 +23,19 @@ export default function News() {
         eyebrow="Newsroom"
         title="What's new at"
         accent="LXXI."
-        subtitle="Deals, partnerships, and perspectives from across our markets — the stories shaping how we deploy capital in Africa."
+        subtitle="Announcements, partnerships, and perspectives from across our markets — published here as they happen."
         bgImage="/service-hero.jpg"
-        primaryCta={{ label: 'Read Insights', href: '/insights' }}
-        secondaryCta={{ label: 'Contact Press', href: '/contact' }}
+        primaryCta={{ label: 'Media Enquiries', href: '/contact' }}
+        secondaryCta={{ label: 'About LXXI', href: '/about' }}
       />
-      <NewsFeed />
+      <ComingSoon
+        eyebrow="Coming soon"
+        title="Our newsroom is"
+        accent="being prepared."
+        body="We'll publish company announcements and market perspectives here. In the meantime, our team is happy to help with media and partnership enquiries."
+        primaryCta={{ label: 'Contact Us', href: '/contact' }}
+        secondaryCta={{ label: 'Subscribe to Insights', href: '/insights#brief' }}
+      />
       <InvestmentTeamCTA />
     </main>
   );

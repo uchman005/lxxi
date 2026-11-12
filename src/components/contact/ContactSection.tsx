@@ -93,7 +93,11 @@ const ContactSection = () => {
 
                         <p className="text-gray-500 text-sm leading-relaxed mb-10 max-w-md">
                             For brokerage, facilitation, or advisory mandates, engagements formally begin with
-                            a Client Engagement Form and Letter of Instruction. See our{' '}
+                            a{' '}
+                            <Link href="/terms-of-engagement#engagement-form" className="text-amber-400 hover:text-amber-300 underline transition-colors">
+                                Client Engagement Form
+                            </Link>{' '}
+                            and Letter of Instruction. See our{' '}
                             <Link href="/terms-of-engagement" className="text-amber-400 hover:text-amber-300 underline transition-colors">
                                 Terms of Engagement
                             </Link>{' '}
@@ -188,7 +192,7 @@ const ContactSection = () => {
                 <div className="mt-16 md:mt-20">
                     <div className="flex items-center gap-3 mb-8" data-aos="fade-right">
                         <div className="h-px w-12 bg-amber-400" />
-                        <span className="text-amber-400 text-sm tracking-[3px] font-medium uppercase">Our Offices</span>
+                        <span className="text-amber-400 text-sm tracking-[3px] font-medium uppercase">Our Presence</span>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {offices.map((office, index) => (
